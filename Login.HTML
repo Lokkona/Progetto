@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <style>
+         .style1{
+            background-color: black;
+            height:200px;
+            width:600px;
+            position: absolute;
+            top: 40px;
+            left: 450px;
+            font-family:'Lato', sans-serif;
+            text-align: center;
+            color: whitesmoke;
+        }
+        .style2{
+            background-color: black;
+            height:200px;
+            width:600px;
+            position: absolute;
+            top: 300px;
+            left: 450px;
+            font-family:'Lato', sans-serif;
+            text-align: center;
+            color: whitesmoke;
+        }
+        .style3{
+            height:100px;
+            width:600px;
+            position: absolute;
+            top: 500px;
+            left: 450px;
+            font-family:'Lato', sans-serif;
+            text-align: center;
+            color: whitesmoke;
+            
+        }
+        body{
+            background-image: src="sfondo.jpeg" alt="Wallpaper" style="width:250px;height:200px;";
+            background-image: url('sfondo.WEBP'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center;
+            margin: 0;
+            height: 100vh;
+        }
+    </style>
+    <title>"Nome Sito"</title>
+</head>
+<body>
+    <div class="style1">
+        <h1>"Nome Sito"</h1>
+        <h2>Benvenuto su "Nome sito", il tuo sito di riferimento per tutte le notizie del mondo calcistico</h2>
+    </div>
+    <div class="style2">
+        <h1>Effettua il login</h1>
+        <form action="login-manager.php" method="POST">
+            <fieldset>
+                <label for="mail">E-mail:</label><br>
+                <input type="email" id="mail" name="mail" required><br>
+                <label for="fpassword">Password:</label><br>
+                <input type="password" id="fpassword" name="fpassword" required><br>
+            </fieldset>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+        <p><h3 class="style3">Non hai un account?<a href="registrati.php"> Registrati</a></h3></p>
+</body>
+</html>
