@@ -21,6 +21,8 @@
             <option value="calcio">Calcio</option>
             <option value="tennis">Tennis</option>
         </select>
+        <label for="data">Data </label>
+        <input type="date" id="data" name="data">
         </div>
         <div id="formBasket" class="formSport hide">
             <div>
