@@ -4,7 +4,7 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
   $host = 'localhost'; // o l'indirizzo del server DB
-  $username = 'postgres';  // il nome utente del DB
+  $username = 'www';  // il nome utente del DB
   $password = '1Nf4m303';      // la password del DB
   $dbname = 'miodatabase';  // il nome del database
   $error_message = ""; 

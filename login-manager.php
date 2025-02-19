@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POS
 
     $host = "localhost"; 
     $dbname = "miodatabase";  
-    $username = "postgres";  
+    $username = "www";  
     $password = "1Nf4m303"; 
 
     $db=pg_connect("host=$host user=$username password=$password dbname=$dbname");
