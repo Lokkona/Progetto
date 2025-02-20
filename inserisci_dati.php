@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id']){
+if(!isset($_SESSION['user_id'])){
     header("Location: Login.html");
     exit();
 }
@@ -107,7 +107,7 @@ try{
 
     pg_query($db,"COMMIT")
 
-}catchcatch(Exception $e) {
+} catch(Exception $e) {
     pg_query($db, "ROLLBACK");
     die("Errore nell'inserimento dei dati: " . $e->getMessage());
 } finally {
