@@ -105,7 +105,7 @@ try{
         throw new Exception(pg_last_error($db));
     }
 
-    pg_query($db,"COMMIT")
+    pg_query($db,"COMMIT");
 
 } catch(Exception $e) {
     pg_query($db, "ROLLBACK");
