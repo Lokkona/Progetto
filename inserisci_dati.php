@@ -17,7 +17,7 @@ pg_query($db,"BEGIN");
 
 try{
     $query = "INSERT INTO prestazioni (user_id, sport, data) VALUES ($1, $2, $3) RETURNING id";
-    $result = pg_query_params($conn, $query, [$user_id, $sport, $data]);
+    $result = pg_query_params($db, $query, [$user_id, $sport, $data]);
     $row = pg_fetch_row($result);
     $prestazione_id = $row[0];
     switch($sport) {
