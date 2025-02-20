@@ -9,9 +9,13 @@ if(!isset($_SESSION['user_id'])){
 
   $db=pg_connect($connection_string) or die('Errore nella connessione al database' . pg_last_error());
 
-$sport = pg_escape_string($_POST['sport']);
-$data = pg_escape_string($_POST['data']);
-$user_id = $_SESSION['user_id'];
+$sport =isset($_POST['sport']) ? pg_escape_string($_POST['sport']) : null;
+$data =isset($_POST['data']) ? pg_escape_string($_POST['data']) : null;
+$user_id = $_SESSION['user_id'] ?? null;
+
+if (!$sport || !$data || !$user_id) {
+    die("Errore: Sport, data o utente mancante.");
+}
 
 pg_query($db,"BEGIN");
 
@@ -106,6 +110,9 @@ try{
     }
 
     pg_query($db,"COMMIT");
+
+    header("Location: dashboard.php?succes=1");
+    exit();
 
 } catch(Exception $e) {
     pg_query($db, "ROLLBACK");
