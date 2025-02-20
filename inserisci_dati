@@ -146,12 +146,17 @@
     <script>
         function mostraSport(){
             const formSport=document.querySelectorAll('.formSport');
-            formSport.forEach(form => form.classList.add('hide'));
+            formSport.forEach(form => {
+                 form.classList.add('hide');
+                 form.querySelectorAll('input,select').forEach(input => input.disabled=true);
+            })
             const sport=document.getElementById('sport').value;
             document.getElementById('invio').style.display='none'
             if(sport){
-                document.getElementById('form' + sport.charAt(0).toUpperCase() + sport.slice(1)).classList.remove('hide');
-                document.getElementById('invio').style.display = 'block';
+                const selectedForm = document.getElementById('form' + sport.charAt(0).toUpperCase() + sport.slice(1));
+                selectedForm.classList.remove('hide');
+                selectedForm.querySelectorAll('input, select').forEach(input => input.disabled = false);
+                document.getElementById('invio').style.display = 'block';   
             }
         }
     </script>

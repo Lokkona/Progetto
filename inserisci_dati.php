@@ -33,21 +33,21 @@ try{
             ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)";
                  $result = pg_query_params($db, $query, [
                     $prestazione_id,
-                    $_POST['minuti_basket'],
-                    $_POST['punti_basket'],
-                    $_POST['tiri_t'],
-                    $_POST['makes'],
-                    $_POST['tiri3'],
-                    $_POST['makes3'],
-                    $_POST['fta'],
-                    $_POST['ft'],
-                    $_POST['rimbalzi'],
-                    $_POST['rimbalzi_offensivi'],
-                    $_POST['rimbalzi_difensivi'],
-                    $_POST['assist_basket'],
-                    $_POST['stoppate'],
-                    $_POST['rubate'],
-                    $_POST['to']
+                    intval($_POST['minuti_basket'] ?? 0),
+                    intval($_POST['punti_basket'] ?? 0),
+                    intval($_POST['tiri_t'] ?? 0),
+                    intval($_POST['makes'] ?? 0),
+                    intval($_POST['tiri3'] ?? 0),
+                    intval($_POST['makes3'] ?? 0),
+                    intval($_POST['fta'] ?? 0),
+                    intval($_POST['ft'] ?? 0),
+                    intval($_POST['rimbalzi'] ?? 0),
+                    intval($_POST['rimbalzi_offensivi'] ?? 0),
+                    intval($_POST['rimbalzi_difensivi'] ?? 0),
+                    intval($_POST['assist_basket'] ?? 0),
+                    intval($_POST['stoppate'] ?? 0),
+                    intval($_POST['rubate'] ?? 0),
+                    intval($_POST['to'] ?? 0)
                 ]);
                 break;
 
@@ -61,18 +61,18 @@ try{
                     
                  $result = pg_query_params($db, $query, [
                     $prestazione_id,
-                    $_POST['minuti_calcio'],
-                    $_POST['gol'],
-                    $_POST['tiri'],
-                    $_POST['tiri_in_porta'],
-                    $_POST['assist_calcio'],
-                    $_POST['passaggi_tentati'],
-                    $_POST['passaggi_riusciti'],
-                    $_POST['intercetti'],
-                    $_POST['contrasti'],
-                    $_POST['palle_recuperate'],
-                    $_POST['dribbling_tentati'],
-                    $_POST['dribbling_riusciti']
+                    intval($_POST['minuti_calcio'] ?? 0),
+                    intval($_POST['gol'] ?? 0),
+                    intval($_POST['tiri'] ?? 0),
+                    intval($_POST['tiri_in_porta'] ?? 0),
+                    intval($_POST['assist_calcio'] ?? 0),
+                    intval($_POST['passaggi_tentati'] ?? 0),
+                    intval($_POST['passaggi_riusciti'] ?? 0),
+                    intval($_POST['intercetti'] ?? 0),
+                    intval($_POST['contrasti'] ?? 0),
+                    intval($_POST['palle_recuperate'] ?? 0),
+                    intval($_POST['dribbling_tentati'] ?? 0),
+                    intval($_POST['dribbling_riusciti'] ?? 0)
                 ]);
                 break;
 
@@ -87,20 +87,20 @@ try{
                         
                  $result = pg_query_params($db, $query, [
                     $prestazione_id,
-                    $_POST['tempo'],
-                    $_POST['punti_giocati'],
-                    $_POST['punti_vinti'],
-                    $_POST['prima_g'],
-                    $_POST['prima_r'],
-                    $_POST['prima_v'],
-                    $_POST['seconda_r'],
-                    $_POST['seconda_v'],
-                    $_POST['doppio_fallo'],
-                    $_POST['risposta_g'],
-                    $_POST['risposta_v'],
-                    $_POST['break'],
-                    $_POST['break_v'],
-                    $_POST['errori']
+                    intval($_POST['tempo'] ?? 0),
+                    intval($_POST['punti_giocati'] ?? 0),
+                    intval($_POST['punti_vinti'] ?? 0),
+                    intval($_POST['prima_g'] ?? 0),
+                    intval($_POST['prima_r'] ?? 0),
+                    intval($_POST['prima_v'] ?? 0),
+                    intval($_POST['seconda_r'] ?? 0),
+                    intval($_POST['seconda_v'] ?? 0),
+                    intval($_POST['doppio_fallo'] ?? 0),
+                    intval($_POST['risposta_g'] ?? 0),
+                    intval($_POST['risposta_v'] ?? 0),
+                    intval($_POST['break'] ?? 0),
+                    intval($_POST['break_v'] ?? 0),
+                    intval($_POST['errori'] ?? 0)
                 ]);
                 break;
     }
@@ -111,7 +111,7 @@ try{
 
     pg_query($db,"COMMIT");
 
-    header("Location: dashboard.php?succes=1");
+    header("Location: homepage.html");
     exit();
 
 } catch(Exception $e) {
