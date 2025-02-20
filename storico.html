@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storico Prestazioni</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+
+    <h2>Storico Prestazioni Sportive</h2>
+    <table id="prestazioniTable">
+        <thead>
+            <tr>
+                <th>Sport</th>
+                <th>Data Inserimento</th>
+                <th>Dettagli</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const utenteId = 1; // ID dell'utente (può essere dinamico)
+            fetch(`recupero_dati.php?utente_id=${utenteId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("#prestazioniTable tbody");
+                    tableBody.innerHTML = ""; // Pulizia della tabella
+
+                    data.forEach(row => {
+                        let tr = document.createElement("tr");
+                        let dettagli = "";
+
+                        // Genera la descrizione dettagliata in base allo sport
+                        if (row.dettagli) {
+                            if (row.sport === "calcio") {
+                                dettagli = `Minuti giocati: ${row.dettagli.minuti}, Gol: ${row.dettagli.gol}, Tiri : ${row.dettagli.tiri}, Tiri in porta: ${row.dettagli.tiri_porta}, Assist: ${row.dettagli.assist}, Passaggi tentati: ${row.dettagli.passaggi_tentati}, Passaggi riusciti: ${row.dettagli.passaggi_riusciti}, Intercetti: ${row.dettagli.intercetti}, Contrasti: ${row.dettagli.contrasti}, Palle recuperate: ${row.dettagli.palle_recuperate}, Dribbling tentati: ${row.dettagli.dribbling_tentati}, Dribbling riusciti: ${row.dettagli.dribbling_riusciti}`;
+                            } else if (row.sport === "basket") {
+                                dettagli = `Minuti giocati: ${row.dettagli.minuti}, Punti : ${row.dettagli.punti}, Tiri tentati : ${row.dettagli.tiri_tentati}, Tiri realizzati : ${row.dettagli.tiri_realizzati}, Tiri da 3 tentati: ${row.dettagli.tiri3_tentati}, Tiri da 3 realizzati: ${row.dettagli.tiri3_realizzati}, Tiri liberi tentati: ${row.dettagli.tiri_liberi_tentati}, Tiri liberi realizzati: ${row.dettagli.tiri_liberi_realizzati}, Rimbalzi totali: ${row.dettagli.rimbalzi_totali}, Rimbalzi offensivi: ${row.dettagli.rimbalzi_offensivi}, Rimbalzi difensivi: ${row.dettagli.rimbalzi_difensivi}, Assist: ${row.dettagli.assist}, Stoppate: ${row.dettagli.stoppate}, Palle rubate: ${row.dettagli.palle_rubate}, Palle perse: ${row.dettagli.palle_perse}`;
+                            } else if (row.sport === "tennis") {
+                                dettagli = `Minuti giocati: ${row.dettagli.tempo}, Punti giocati : ${row.dettagli.punti_giocati}, Punti vinti : ${row.dettagli.punti_vinti}, Prima giocate : ${row.dettagli.prima_giocate}, Prima campo : ${row.dettagli.prima_campo}, Prima vinte : ${row.dettagli.prima_vinte}, Seconda campo : ${row.dettagli.seconda_campo}, Seconda vinte : ${row.dettagli.seconda_vinte}, Doppi falli : ${row.dettagli.doppi_falli}, Risposte giocate : ${row.dettagli.risposta_giocati}, Risposte vinte : ${row.dettagli.risposta_vinti}, Break punti : ${row.dettagli.break_punti}, Break convertiti : ${row.dettagli.break_convertiti}, Errori : ${row.dettagli.errori}`;
+                            }
+                        }
+
+                        tr.innerHTML = `
+                            <td>${row.sport}</td>
+                            <td>${row.data_inserimento}</td>
+                            <td>${dettagli}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => console.error("Errore nel recupero dati:", error));
+        });
+    </script>
+
+</body>
+</html>
