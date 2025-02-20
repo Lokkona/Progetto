@@ -5,13 +5,13 @@ if(!isset($_SESSION['user_id'])){
     exit();
 }
  
-  $connection_string="host=localhost port=5432 dbname=moidatabase user=www password=1Nf4m303";
+  $connection_string="host=localhost port=5432 dbname=miodatabase user=www password=1Nf4m303";
 
   $db=pg_connect($connection_string) or die('Errore nella connessione al database' . pg_last_error());
 
 $sport = pg_escape_string($_POST['sport']);
 $data = pg_escape_string($_POST['data']);
-$uname = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 pg_query($db,"BEGIN");
 
