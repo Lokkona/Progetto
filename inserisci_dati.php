@@ -102,7 +102,7 @@ try{
     }
 
     if(!$result){
-        throw new Exception(pg_last_error($conn));
+        throw new Exception(pg_last_error($db));
     }
 
     pg_query($db,"COMMIT")
