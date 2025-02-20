@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 header("Content-Type: application/json");
 
 // Connessione al database
@@ -8,20 +9,35 @@ $dbname = "miodatabase";
 $user = "www";
 $password = "1Nf4m303";
 
-try {
-    $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$connection_string = "host=$host dbname=$dbname user=$user password=$password";
 
-    $utente_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 1;
+// Connessione al database con pg_connect
+$db = pg_connect($connection_string);
+
+if (!$db) {
+    echo json_encode(["error" => "Connessione al database fallita"]);
+    exit;
+}
+
+// Usa $_SESSION invece di $_GET per l'utente loggato
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(["error" => "Utente non autenticato"]);
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
 
     // Query per ottenere tutte le prestazioni inserite dall'utente
-    $query = "SELECT id, sport, data, created_at FROM prestazioni WHERE user_id = :utente_id ORDER BY created_at DESC";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":utente_id", $utente_id, PDO::PARAM_INT);
-    $stmt->execute();
+    $query = "SELECT id, sport, data, created_at FROM prestazioni WHERE user_id = $1 ORDER BY created_at DESC";
+    $result = pg_query_params($db, $query, [$user_id]);
 
-    $prestazioni = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    if (!$result) {
+        echo json_encode(["error" => "Errore nella query: " . pg_last_error($db)]);
+        exit;
+    }
+    
+    $prestazioni = pg_fetch_all($result);
+    
     foreach ($prestazioni as &$p) {
         $sport = $p['sport'];
         $prestazione_id = $p['id'];
@@ -30,26 +46,28 @@ try {
         $dettagliQuery = "";
         switch ($sport) {
             case "calcio":
-                $dettagliQuery = "SELECT minuti, gol, tiri, tiri_porta, assist, passaggi_tentati, passaggi_riusciti, intercetti, contrasti, palle_recuperate, dribbling_tentati, dribbling_riusciti FROM stats_calcio WHERE prestazione_id = :prestazione_id";
+                $dettagliQuery = "SELECT minuti, gol, tiri, tiri_porta, assist, passaggi_tentati, passaggi_riusciti, intercetti, contrasti, palle_recuperate, dribbling_tentati, dribbling_riusciti FROM stats_calcio WHERE prestazione_id = $1";
                 break;
             case "basket":
-                $dettagliQuery = "SELECT minuti, punti, tiri_tentati, tiri_realizzati, tiri3_tentati, tiri3_realizzati, tiri_liberi_tentati, tiri_liberi_realizzati, rimbalzi_totali, rimbalzi_offensivi, rimbalzi_difensivi, assist, stoppate, palle_rubate, palle_perse FROM stats_basket WHERE prestazione_id = :prestazione_id";
+                $dettagliQuery = "SELECT minuti, punti, tiri_tentati, tiri_realizzati, tiri3_tentati, tiri3_realizzati, tiri_liberi_tentati, tiri_liberi_realizzati, rimbalzi_totali, rimbalzi_offensivi, rimbalzi_difensivi, assist, stoppate, palle_rubate, palle_perse FROM stats_basket WHERE prestazione_id = $1";
                 break;
             case "tennis":
-                $dettagliQuery = "SELECT tempo, punti_giocati, punti_vinti, prima_giocate, prima_campo, prima_vinte, seconda_campo, seconda_vinte, doppi_falli, risposta_giocati, risposta_vinti, break_punti, break_convertiti, errori FROM stats_tennis WHERE prestazione_id = :prestazione_id";
+                $dettagliQuery = "SELECT tempo, punti_giocati, punti_vinti, prima_giocate, prima_campo, prima_vinte, seconda_campo, seconda_vinte, doppi_falli, risposta_giocati, risposta_vinti, break_punti, break_convertiti, errori FROM stats_tennis WHERE prestazione_id = $1";
                 break;
         }
 
         if ($dettagliQuery) {
-            $stmtDettagli = $conn->prepare($dettagliQuery);
-            $stmtDettagli->bindParam(":prestazione_id", $prestazione_id, PDO::PARAM_INT);
-            $stmtDettagli->execute();
-            $p['dettagli'] = $stmtDettagli->fetch(PDO::FETCH_ASSOC);
+            $stmtDettagli = pg_query_params($db, $dettagliQuery, [$prestazione_id]);
+            if ($stmtDettagli) {
+                $p['dettagli'] = pg_fetch_assoc($stmtDettagli);
+            } else {
+                $p['dettagli'] = null;
+            }
         }
     }
-
+    
     echo json_encode($prestazioni);
-} catch (PDOException $e) {
-    echo json_encode(["error" => $e->getMessage()]);
-}
-?>
+    
+    // Chiudi la connessione al database
+    pg_close($db);
+    ?>

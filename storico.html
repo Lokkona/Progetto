@@ -27,7 +27,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const utenteId = 1; // ID dell'utente (può essere dinamico)
-            fetch(`recupero_dati.php?utente_id=${utenteId}`)
+            fetch(`recupero_dati.php?user_id=${utenteId}`)
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.querySelector("#prestazioniTable tbody");
