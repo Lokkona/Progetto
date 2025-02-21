@@ -58,6 +58,7 @@
                     if(password_verify($fpassword, $row["pass"])){
                         $_SESSION["user_id"] = $row["id"];
                         $_SESSION["user_mail"] = $mail;
+                        $_SESSION['uname'] = $row['uname'];
                        header("Location: homepage.html");
                     }
                 } else {
