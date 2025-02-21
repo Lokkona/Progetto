@@ -8,11 +8,19 @@
         table { width: 100%; border-collapse: collapse; }
         th, td { border: 1px solid black; padding: 8px; text-align: left; }
         th { background-color: #f4f4f4; }
+        select { margin-bottom: 10px; padding: 5px; }
     </style>
 </head>
 <body>
 
     <h2>Storico Prestazioni Sportive</h2>
+    <label for="sportFilter">Filtra per sport:</label>
+    <select id="sportFilter">
+        <option value="tutti">Tutti</option>
+        <option value="calcio">Calcio</option>
+        <option value="basket">Basket</option>
+        <option value="tennis">Tennis</option>
+    </select>
     <table id="prestazioniTable">
         <thead>
             <tr>
@@ -25,19 +33,28 @@
     </table>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const utenteId = 1; // ID dell'utente (può essere dinamico)
-            fetch(`recupero_dati.php?user_id=${utenteId}`)
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.querySelector("#prestazioniTable tbody");
-                    tableBody.innerHTML = ""; // Pulizia della tabella
+       document.addEventListener("DOMContentLoaded", function () {
+            const sportFilter = document.getElementById("sportFilter"); // Select per il filtro
+            const tableBody = document.querySelector("#prestazioniTable tbody");
+            let prestazioniData = []; // Memorizza i dati delle prestazioni
 
-                    data.forEach(row => {
-                        let tr = document.createElement("tr");
+            function fetchData() {
+                fetch("recupero_dati.php")
+                    .then(response => response.json())
+                    .then(data => {
+                        prestazioniData = data; // Salviamo i dati originali
+                        updateTable(); // Popoliamo la tabella con tutti i dati
+                    })
+                    .catch(error => console.error("Errore nel recupero dati:", error));
+            }
+
+            function updateTable() {
+                const selectedSport = sportFilter.value; // Sport selezionato
+                tableBody.innerHTML = ""; // Pulisce la tabella
+
+                prestazioniData.forEach(row => {
+                    if (selectedSport === "tutti" || row.sport === selectedSport) {
                         let dettagli = "";
-
-                        // Genera la descrizione dettagliata in base allo sport
                         if (row.dettagli) {
                             if (row.sport === "calcio") {
                                 dettagli = `Minuti giocati: ${row.dettagli.minuti}, Gol: ${row.dettagli.gol}, Tiri : ${row.dettagli.tiri}, Tiri in porta: ${row.dettagli.tiri_porta}, Assist: ${row.dettagli.assist}, Passaggi tentati: ${row.dettagli.passaggi_tentati}, Passaggi riusciti: ${row.dettagli.passaggi_riusciti}, Intercetti: ${row.dettagli.intercetti}, Contrasti: ${row.dettagli.contrasti}, Palle recuperate: ${row.dettagli.palle_recuperate}, Dribbling tentati: ${row.dettagli.dribbling_tentati}, Dribbling riusciti: ${row.dettagli.dribbling_riusciti}`;
@@ -54,9 +71,11 @@
                             <td>${dettagli}</td>
                         `;
                         tableBody.appendChild(tr);
+                    }
                     });
-                })
-                .catch(error => console.error("Errore nel recupero dati:", error));
+                }
+                sportFilter.addEventListener("change", updateTable); 
+                fetchData();
         });
     </script>
 
