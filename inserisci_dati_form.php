@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +11,35 @@
         .hide{
             display: none;
         }
+        .error {
+            color: red;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid red;
+            background-color: #ffe6e6;
+        }
+
+        .success {
+            color: green;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid green;
+            background-color: #e6ffe6;
+        }
     </style>
 </head>
 <body>
     <h1>Inserici i tuoi dati prestazione</h1>
+    <?php
+    if (isset($_SESSION['success'])) {
+        echo $_SESSION['success'];
+        unset($_SESSION['success']);
+    }
+    if (isset($_SESSION['error'])) {
+        echo $_SESSION['error'];
+        unset($_SESSION['error']);
+    }
+    ?> 
     <form action="inserisci_dati.php" method="post"> 
         <div>
         <label for="sport">Seleziona lo sport</label>

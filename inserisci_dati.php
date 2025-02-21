@@ -4,7 +4,69 @@ if(!isset($_SESSION['user_id'])){
     header("Location: Login.html");
     exit();
 }
- 
+
+function validateBasketStats($data) {
+    $error_message = "";
+    
+    if ($data['makes'] > $data['tiri_t']) {
+        $error_message .= "<div class=error>I tiri realizzati non possono essere maggiori dei tiri tentati</div>";
+    }
+    if ($data['makes3'] > $data['tiri3']) {
+        $error_message .= "<div class=error>I tiri da 3 realizzati non possono essere maggiori dei tiri da 3 tentati</div>";
+    }
+    if ($data['ft'] > $data['fta']) {
+        $error_message .= "<div class=error>I tiri liberi realizzati non possono essere maggiori dei tiri liberi tentati</div>";
+    }
+    
+    $total_rebounds = intval($data['rimbalzi_offensivi']) + intval($data['rimbalzi_difensivi']);
+    if ($total_rebounds !== intval($data['rimbalzi'])) {
+        $error_message .= "<div class=error>La somma dei rimbalzi offensivi e difensivi deve coincidere con il totale dei rimbalzi</div>";
+    }
+    
+    return $error_message;
+}
+
+function validateCalcioStats($data) {
+    $error_message = "";
+    
+    if ($data['tiri_in_porta'] > $data['tiri']) {
+        $error_message .= "<div class=error>I tiri in porta non possono essere maggiori del totale dei tiri</div>";
+    }
+    if ($data['gol'] > $data['tiri_in_porta']) {
+        $error_message .= "<div class=error>I gol non possono essere maggiori dei tiri in porta</div>";
+    }
+    if ($data['passaggi_riusciti'] > $data['passaggi_tentati']) {
+        $error_message .= "<div class=error>I passaggi riusciti non possono essere maggiori dei passaggi tentati</div>";
+    }
+    if ($data['dribbling_riusciti'] > $data['dribbling_tentati']) {
+        $error_message .= "<div class=error>I dribbling riusciti non possono essere maggiori dei dribbling tentati</div>";
+    }
+    
+    return $error_message;
+}
+
+function validateTennisStats($data) {
+    $error_message = "";
+    
+    if ($data['prima_r'] > $data['prima_g']) {
+        $error_message .= "<div class=error>Le prime in campo non possono essere maggiori delle prime giocate</div>";
+    }
+    if ($data['prima_v'] > $data['prima_r']) {
+        $error_message .= "<div class=error>I punti vinti con la prima non possono essere maggiori delle prime in campo</div>";
+    }
+    if ($data['seconda_v'] > $data['seconda_r']) {
+        $error_message .= "<div class=error>I punti vinti con la seconda non possono essere maggiori delle seconde in campo</div>";
+    }
+    if ($data['break_v'] > $data['break']) {
+        $error_message .= "<div class=error>I break convertiti non possono essere maggiori dei punti break</div>";
+    }
+    if ($data['risposta_v'] > $data['risposta_g']) {
+        $error_message .= "<div class=error>I punti in risposta vinti non possono essere maggiori dei punti in risposta giocati</div>";
+    }
+    
+    return $error_message;
+}
+
   $connection_string="host=localhost port=5432 dbname=miodatabase user=www password=1Nf4m303";
 
   $db=pg_connect($connection_string) or die('Errore nella connessione al database' . pg_last_error());
@@ -15,6 +77,27 @@ $user_id = $_SESSION['user_id'] ?? null;
 
 if (!$sport || !$data || !$user_id) {
     die("Errore: Sport, data o utente mancante.");
+}
+
+$error_message = "";
+switch($sport) {
+    case 'basket':
+        $error_message = validateBasketStats($_POST);
+        break;
+    case 'calcio':
+        $error_message = validateCalcioStats($_POST);
+        break;
+    case 'tennis':
+        $error_message = validateTennisStats($_POST);
+        break;
+    default:
+        $error_message = "<div class=error>Sport non valido</div>";
+}
+
+if ($error_message !== "") {
+    $_SESSION['error'] = $error_message;
+    header("Location: inserisci_dati_form.php");
+    exit();
 }
 
 pg_query($db,"BEGIN");
@@ -109,9 +192,9 @@ try{
         throw new Exception(pg_last_error($db));
     }
 
-    pg_query($db,"COMMIT");
-
-    header("Location: homepage.html");
+    pg_query($db, "COMMIT");
+    $_SESSION['success'] = "<div class=success>Dati inseriti con successo!</div>";
+    header("Location: inserisci_dati_form.php");
     exit();
 
 } catch(Exception $e) {
