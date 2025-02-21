@@ -2,7 +2,6 @@
 <?php
 session_start();
 header("Content-Type: application/json");
-
 // Connessione al database
 $host = "localhost";
 $dbname = "miodatabase";
@@ -56,6 +55,12 @@ $user_id = $_SESSION['user_id'];
                 break;
         }
 
+        if ($dettagliQuery) {
+            $stmtDettagli = pg_query_params($db, $dettagliQuery, [$prestazione_id]);
+            $dettagli = pg_fetch_assoc($stmtDettagli);
+            $p['dettagli'] = $dettagli;
+        }
+        
         if ($dettagliQuery) {
             $stmtDettagli = pg_query_params($db, $dettagliQuery, [$prestazione_id]);
             if ($stmtDettagli) {
