@@ -105,7 +105,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
             <a href="homepage.html">NOME SITO</a>
             <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
             <a href="storico.html">STORICO</a>
-            <a href="statistiche.html">STATISTICHE</a>
+            <a href="statistiche_html.php">STATISTICHE</a>
         </div>
         <div class="row2">
             <img src="immagine-utente.jpg" alt="Immagine Utente" onclick="toggleMenu()">
