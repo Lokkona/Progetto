@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POS
                 $_SESSION["user_id"] = $row["id"];
                 $_SESSION["user_mail"] = $mail;
                 $_SESSION['uname'] = $row['uname'];
-               header("Location: homepage.html");
+               header("Location: index.php");
             }
         } else {
             echo"<h3>Utente inesistente o password errata</h3>";

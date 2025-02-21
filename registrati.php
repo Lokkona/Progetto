@@ -59,7 +59,7 @@
                         $_SESSION["user_id"] = $row["id"];
                         $_SESSION["user_mail"] = $mail;
                         $_SESSION['uname'] = $row['uname'];
-                       header("Location: homepage.html");
+                       header("Location: index.php");
                     }
                 } else {
                     echo "<h3>Errore nella query: " . pg_last_error($db) . "</h3>";

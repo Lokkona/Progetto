@@ -106,7 +106,7 @@ if(!$isLoggedIn){
 <body>
     <div class="topnav">
         <div class="row1">
-            <a href="homepage.html">NOME SITO</a>
+            <a href="index.php">NOME SITO</a>
             <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
             <a href="storico.html">STORICO</a>
             <a href="statistiche_html.php">STATISTICHE</a>
