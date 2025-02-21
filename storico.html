@@ -63,14 +63,12 @@
             // Filtriamo per sport
             let filteredData = prestazioniData.filter(row => selectedSport === "tutti" || row.sport === selectedSport);
 
-            // Ordinamento
-            filteredData.sort((a, b) => {
-                if (selectedOrder === "evento") {
-                    return new Date(b.data) - new Date(a.data);
-                } else {
-                    return new Date(b.created_at) - new Date(a.created_at);
-                }
-            });
+           // Ordina i dati in base alla selezione dell'utente
+           let sortedData = prestazioniData.sort((a, b) => {
+           let dateA = selectedOrder === "evento" ? new Date(a.data) : new Date(a.created_at);
+           let dateB = selectedOrder === "evento" ? new Date(b.data) : new Date(b.created_at);
+           return dateB - dateA; // Ordine decrescente
+        });
 
             tableBody.innerHTML = ""; // Pulisce la tabella
 
