@@ -1,5 +1,7 @@
 <?php
 session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+$uname = $isLoggedIn ? $_SESSION['uname'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,57 +10,115 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserisci_dati</title>
     <style>
-        body{
-            width=100%;
-        }
-        .hide{
-            display: none;
-        }
-        .error {
-            color: red;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid red;
-            background-color: #ffe6e6;
-        }
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    }
 
-        .success {
-            color: green;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid green;
-            background-color: #e6ffe6;
-        }
-        .topnav{
-            overflow:hidden;
-            background-color:black;
-            width: 100%;
-            height: 70px;
-            padding: 20px;
-            display: block;
-            margin: 0px;
-        }
-        .topnav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            border-right: solid white 1px;
-        }
-        .topnav a:hover{
-            color: black;
-            background-color: grey;
-        }      
-    </style>
-</head>
+    .hide {
+        display: none;
+    }
+
+    .error {
+        color: red;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid red;
+        background-color: #ffe6e6;
+    }
+
+    .success {
+        color: green;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid green;
+        background-color: #e6ffe6;
+    }
+
+    /* Stile della barra di navigazione */
+    .topnav {
+        display: flex; /* Layout flessibile */
+        align-items: center; /* Allinea verticalmente */
+        justify-content: space-between; /* Spaziatura tra link e immagine */
+        background-color: black;
+        padding: 10px 20px;
+    }
+
+    /* Stile dei link nella nav */
+    .row1 {
+        display: flex;
+        gap: 10px;
+    }
+
+    .row1 a {
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-right: solid white 1px;
+    }
+
+    .row1 a:hover {
+        color: black;
+        background-color: grey;
+    }
+
+    /* Stile immagine utente */
+    .row2 img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Immagine rotonda */
+        object-fit: cover;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px 0;
+        z-index: 10;
+        width: 180px;
+    }
+
+    /* Stile delle voci del menu */
+    .dropdown-menu a {
+        display: block;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+
 <body>
     <div class="topnav">
-        <a href="homepage.html">NOME SITO</a>
-        <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
-        <a href="storico.html">STORICO</a>
-        <a href="statistiche.html">STATISTICHE</a>
+        <div class="row1">
+            <a href="homepage.html">NOME SITO</a>
+            <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
+            <a href="storico.html">STORICO</a>
+            <a href="statistiche.html">STATISTICHE</a>
+        </div>
+        <div class="row2">
+            <img src="immagine-utente.jpg" alt="Immagine Utente" onclick="toggleMenu()">
+            <div class="dropdown-menu" id="dropdownMenu">
+            <?php if ($isLoggedIn): ?>
+                <p>Ciao, <?php echo htmlspecialchars($uname); ?>!</p>
+                <a href="logout.php">Logout</a>
+            <?php else: ?>
+                <a href="login.php">Login</a>
+                <a href="registrati.php">Registrati</a>
+            <?php endif; ?>
+            </div>
+        </div>
     </div>
     <h1>Inserici i tuoi dati prestazione</h1>
     <?php
@@ -201,7 +261,6 @@ session_start();
         <button type="submit" id="invio">Invia</button>
         </div>
     </form>
-
     <script>
         function mostraSport(){
             const formSport=document.querySelectorAll('.formSport');
@@ -217,6 +276,17 @@ session_start();
                 selectedForm.querySelectorAll('input, select').forEach(input => input.disabled = false);
                 document.getElementById('invio').style.display = 'block';   
             }
+        }
+
+        function toggleMenu(){
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+            document.addEventListener("click", function closeMenu(event) {
+                if (!event.target.closest('.row2')) {
+                    menu.style.display = "none";
+                    document.removeEventListener("click", closeMenu);
+                }
+            });
         }
     </script>
 </body>
