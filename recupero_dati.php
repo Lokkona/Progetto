@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
     // Query per ottenere tutte le prestazioni inserite dall'utente
-    $query = "SELECT id, sport, data, created_at FROM prestazioni WHERE user_id = $1 ORDER BY created_at DESC";
+    $query = "SELECT id, sport, TO_CHAR(data, 'YYYY-MM-DD') AS data, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM prestazioni WHERE user_id = $1 ORDER BY created_at DESC";
     $result = pg_query_params($db, $query, [$user_id]);
 
     if (!$result) {

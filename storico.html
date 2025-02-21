@@ -87,10 +87,11 @@
 
                         let tr = document.createElement("tr");
                         tr.innerHTML = `
-                            <td>${row.data}</td>
+                            <td>${row.data || "N/A"}</td>
                             <td>${row.sport}</td>
-                            <td>${row.created_at}</td>
+                            <td>${row.created_at || "N/A"}</td>
                             <td>${dettagli}</td>
+                            <td>${row.dettagli ? JSON.stringify(row.dettagli) : "N/A"}</td>
                         `;
                         tableBody.appendChild(tr);
                     }
