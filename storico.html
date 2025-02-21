@@ -14,18 +14,25 @@
 <body>
 
     <h2>Storico Prestazioni Sportive</h2>
-    <label for="sportFilter">Filtra per sport:</label>
+    <h3>Filtra per:</h3>
+    <label for="sportFilter">sport</label>
     <select id="sportFilter">
         <option value="tutti">Tutti</option>
         <option value="calcio">Calcio</option>
         <option value="basket">Basket</option>
         <option value="tennis">Tennis</option>
     </select>
+    <label for="timeFilter">tempo</label>
+    <select id="timeFilter">
+        <option value="default">default(momento inserimento)</option>
+        <option value="data">data evento</option>
+    </select>
     <table id="prestazioniTable">
         <thead>
             <tr>
+                <th>Data Evento</th>
                 <th>Sport</th>
-                <th>Data Inserimento</th>
+                <th>Momento Inserimento</th>
                 <th>Dettagli</th>
             </tr>
         </thead>
@@ -34,23 +41,38 @@
 
     <script>
        document.addEventListener("DOMContentLoaded", function () {
-            const sportFilter = document.getElementById("sportFilter"); // Select per il filtro
-            const tableBody = document.querySelector("#prestazioniTable tbody");
-            let prestazioniData = []; // Memorizza i dati delle prestazioni
+        const sportFilter = document.getElementById("sportFilter"); // Filtro sport
+        const orderFilter = document.getElementById("orderFilter"); // Filtro ordinamento
+        const tableBody = document.querySelector("#prestazioniTable tbody");
+        let prestazioniData = []; // Salviamo i dati ricevuti
 
-            function fetchData() {
-                fetch("recupero_dati.php")
-                    .then(response => response.json())
-                    .then(data => {
-                        prestazioniData = data; // Salviamo i dati originali
-                        updateTable(); // Popoliamo la tabella con tutti i dati
-                    })
-                    .catch(error => console.error("Errore nel recupero dati:", error));
-            }
+        function fetchData() {
+            fetch("recupero_dati.php")
+                .then(response => response.json())
+                .then(data => {
+                    prestazioniData = data;
+                    updateTable();
+                })
+                .catch(error => console.error("Errore nel recupero dati:", error));
+        }
 
-            function updateTable() {
-                const selectedSport = sportFilter.value; // Sport selezionato
-                tableBody.innerHTML = ""; // Pulisce la tabella
+        function updateTable() {
+            const selectedSport = sportFilter.value;
+            const selectedOrder = orderFilter.value;
+
+            // Filtriamo per sport
+            let filteredData = prestazioniData.filter(row => selectedSport === "tutti" || row.sport === selectedSport);
+
+            // Ordinamento
+            filteredData.sort((a, b) => {
+                if (selectedOrder === "evento") {
+                    return new Date(b.data_evento) - new Date(a.data_evento);
+                } else {
+                    return new Date(b.data_inserimento) - new Date(a.data_inserimento);
+                }
+            });
+
+            tableBody.innerHTML = ""; // Pulisce la tabella
 
                 prestazioniData.forEach(row => {
                     if (selectedSport === "tutti" || row.sport === selectedSport) {
@@ -67,6 +89,7 @@
 
                         let tr = document.createElement("tr");
                         tr.innerHTML = `
+                            <td>${row.data_evento}</td>
                             <td>${row.sport}</td>
                             <td>${row.data_inserimento}</td>
                             <td>${dettagli}</td>
@@ -76,6 +99,7 @@
                     });
                 }
                 sportFilter.addEventListener("change", updateTable); 
+                orderFilter.addEventListener("change", updateTable);
                 fetchData();
         });
     </script>
