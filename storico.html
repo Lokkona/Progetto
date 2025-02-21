@@ -22,8 +22,8 @@
         <option value="basket">Basket</option>
         <option value="tennis">Tennis</option>
     </select>
-    <label for="timeFilter">tempo</label>
-    <select id="timeFilter">
+    <label for="orderFilter">tempo</label>
+    <select id="orderFilter">
         <option value="default">default(momento inserimento)</option>
         <option value="data">data evento</option>
     </select>
@@ -66,9 +66,9 @@
             // Ordinamento
             filteredData.sort((a, b) => {
                 if (selectedOrder === "evento") {
-                    return new Date(b.data_evento) - new Date(a.data_evento);
+                    return new Date(b.data) - new Date(a.data);
                 } else {
-                    return new Date(b.data_inserimento) - new Date(a.data_inserimento);
+                    return new Date(b.created_at) - new Date(a.created_at);
                 }
             });
 
@@ -89,9 +89,9 @@
 
                         let tr = document.createElement("tr");
                         tr.innerHTML = `
-                            <td>${row.data_evento}</td>
+                            <td>${row.data}</td>
                             <td>${row.sport}</td>
-                            <td>${row.data_inserimento}</td>
+                            <td>${row.created_at}</td>
                             <td>${dettagli}</td>
                         `;
                         tableBody.appendChild(tr);
