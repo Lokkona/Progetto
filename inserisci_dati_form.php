@@ -8,6 +8,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserisci_dati</title>
     <style>
+        body{
+            width=100%;
+        }
         .hide{
             display: none;
         }
@@ -26,9 +29,37 @@ session_start();
             border: 1px solid green;
             background-color: #e6ffe6;
         }
+        .topnav{
+            overflow:hidden;
+            background-color:black;
+            width: 100%;
+            height: 70px;
+            padding: 20px;
+            display: block;
+            margin: 0px;
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-right: solid white 1px;
+        }
+        .topnav a:hover{
+            color: black;
+            background-color: grey;
+        }      
     </style>
 </head>
 <body>
+    <div class="topnav">
+        <a href="homepage.html">NOME SITO</a>
+        <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
+        <a href="storico.html">STORICO</a>
+        <a href="statistiche.html">STATISTICHE</a>
+    </div>
     <h1>Inserici i tuoi dati prestazione</h1>
     <?php
     if (isset($_SESSION['success'])) {
