@@ -1,0 +1,122 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.error {
+    color: red;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid red;
+    background-color: #ffe6e6;
+}
+
+.success {
+    color: green;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid green;
+    background-color: #e6ffe6;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 5px 20px;
+    flex-wrap: wrap;
+}
+
+
+.row1 {
+    display: flex;
+    gap: 10px;
+}
+
+.row1 a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: solid white 1px;
+}
+
+.row1 a:hover {
+    color: black;
+    background-color: grey;
+}
+
+
+.row2 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Immagine rotonda */
+    object-fit: cover;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 10;
+    width: 180px;
+}
+
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+.header{
+    background-color: orange;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    height: 100px;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+/* Impostazione del layout globale */
+html, body {
+    height: 100%;  /* Garantisce che il body occupi l'intera altezza */
+    margin: 0;     /* Rimuove il margine predefinito */
+}
+
+body {
+    display: flex;
+    flex-direction: column;  /* Dispone gli elementi in colonna */
+}
+
+.container {
+    flex-grow: 1;  /* Consente al contenuto di crescere e occupare lo spazio rimanente */
+}
+
+.footer {
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    height: 50px;
+    position: relative;
+    bottom: 0; /* Assicura che il footer stia sempre in fondo */
+}

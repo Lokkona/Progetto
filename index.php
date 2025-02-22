@@ -8,79 +8,13 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
-    <style>
-    .flex-container {
-        display: flex;
-        flex-direction: row;
-        margin: 0;
-        }
-/* Stile della barra di navigazione */
-    .topnav {
-        display: flex; /* Layout flessibile */
-        align-items: center; /* Allinea verticalmente */
-        justify-content: space-between; /* Spaziatura tra link e immagine */
-        background-color: black;
-        padding: 10px 20px;
-    }
-
-    /* Stile dei link nella nav */
-    .row1 {
-        display: flex;
-        gap: 10px;
-    }
-
-    .row1 a {
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        border-right: solid white 1px;
-    }
-
-    .row1 a:hover {
-        color: black;
-        background-color: grey;
-    }
-
-    /* Stile immagine utente */
-    .row2 img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%; /* Immagine rotonda */
-        object-fit: cover;
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 60px;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        padding: 10px 0;
-        z-index: 10;
-        width: 180px;
-    }
-
-    /* Stile delle voci del menu */
-    .dropdown-menu a {
-        display: block;
-        padding: 10px 20px;
-        color: black;
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-
-    .dropdown-menu a:hover {
-        background-color: #f0f0f0;
-    }
-</style>
+    <link rel="stylesheet" href="index.css">
 
 <body>
+    <div class="header">NOME SITO</div>
     <div class="topnav">
         <div class="row1">
-            <a href="index.php">NOME SITO</a>
+            <a href="index.php">HOME</a>
             <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
             <a href="storico.php">STORICO</a>
             <a href="statistiche_html.php">STATISTICHE</a>
@@ -97,7 +31,39 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
             <?php endif; ?>
             </div>
         </div>
-    </div>
+        </div>
+        <div class="welcome-section">
+        <div class="welcome-text">
+            <h1>Benvenuto nel tuo Tracker di Statistiche Sportive</h1>
+            <?php if ($isLoggedIn): ?>
+                <p class="user-greeting">Bentornato, <?php echo htmlspecialchars($uname); ?>!</p>
+            <?php endif; ?>
+            <p>Tieni traccia delle tue prestazioni sportive, analizza i tuoi progressi e migliora il tuo gioco.</p>
+        </div>
+        </div>
+
+        <div class="features-grid">
+        <div class="feature-card">
+            <h3>Inserisci Prestazione</h3>
+            <p>Registra i dati delle tue partite di basket, calcio o tennis. Mantieni uno storico completo delle tue performance.</p>
+            <a href="inserisci_dati_form.php">Aggiungi Prestazione</a>
+        </div>
+
+        <div class="feature-card">
+            <h3>Visualizza Storico</h3>
+            <p>Consulta tutte le tue prestazioni passate. Analizza i tuoi risultati e monitora i tuoi progressi nel tempo.</p>
+            <a href="storico.php">Vedi Storico</a>
+        </div>
+
+        <div class="feature-card">
+            <h3>Statistiche</h3>
+            <p>Analizza le tue statistiche con grafici dettagliati. Confronta diverse metriche e scopri i tuoi punti di forza.</p>
+            <a href="statistiche_html.php">Vedi Statistiche</a>
+        </div>
+        </div>
+
+        <div class="footer"></div>
+    
     <script>
     function toggleMenu(){
             const menu = document.getElementById("dropdownMenu");
