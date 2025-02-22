@@ -70,7 +70,7 @@ $uname = $isLoggedIn ? $_SESSION["uname"] : '';
                 <h3>Tiri</h3>
                 <label for="tiri_t">Tentati</label>
                 <input type="number" id="tiri_t" name="tiri_t" min="0" required>
-                <label for="makes">Reaizzati</label>
+                <label for="makes">Realizzati</label>
                 <input type="number" name="makes" id="makes" min="0" required>
                 <h3>Tiri da 3</h3>
                 <label for="tiri3">Tentati</label>
