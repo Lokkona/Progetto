@@ -8,7 +8,82 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="index.css">
+=======
+    <style>
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        }
+        body {
+        background: url('sfondo.webp') no-repeat center center fixed;
+        background-size: cover;
+        }
+/* Stile della barra di navigazione */
+    .topnav {
+        display: flex; /* Layout flessibile */
+        align-items: center; /* Allinea verticalmente */
+        justify-content: space-between; /* Spaziatura tra link e immagine */
+        background-color: black;
+        padding: 10px 20px;
+    }
+
+    /* Stile dei link nella nav */
+    .row1 {
+        display: flex;
+        gap: 10px;
+    }
+
+    .row1 a {
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-right: solid white 1px;
+    }
+
+    .row1 a:hover {
+        color: black;
+        background-color: grey;
+    }
+
+    /* Stile immagine utente */
+    .row2 img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Immagine rotonda */
+        object-fit: cover;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px 0;
+        z-index: 10;
+        width: 180px;
+    }
+
+    /* Stile delle voci del menu */
+    .dropdown-menu a {
+        display: block;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+>>>>>>> 46d7974fc6a92e2e0dc06bc8b13ea12e9df24d3c
 
 <body>
     <div class="header">NOME SITO</div>

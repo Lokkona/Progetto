@@ -80,7 +80,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
     <style>
-        .style4{
+        .sticky_form{
             font-family:'Lato', sans-serif;
             color: whitesmoke;
             background-color: black;
@@ -101,8 +101,8 @@
             z-index:1000;
         }
         body{
-            background-image: src="sfondo.jpeg" alt="Wallpaper" style="width:250px;height:200px;";
-            background-image: url('sfondo.WEBP'); 
+            background-image: src="sfondo.webp" alt="Wallpaper" style="width:250px;height:200px;";
+            background-image: url('sfondo.webp'); 
             background-size: cover; 
             background-repeat: no-repeat; 
             background-position: center;
@@ -118,28 +118,30 @@
 <?php if (!empty($success_message)): ?>
     <p><?php echo $success_message; ?></p>
 <?php endif; ?>
-    <form method="POST" action="registrati.php" id="registration_form">
-    <fieldset class="style4">
-        <h1 style=text-align:center>"Nome Sito"</h1>
-        <h2 style=float:right;padding-right:100px;padding-top:100px>Unisciti alla nostra community<br>e rimani sempre aggiornato!</h2>
-        <h2>Registrati</h2>
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        <label for="mail">E-mail:</label><br>
-        <input type="email" id="mail" name="mail" required><br>
-        <label for="uname">Username:</label><br>
-        <input type="text" id="uname" name="uname" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" placeholder="min 6 acratteri" required><br>
-        <label for="fpassword">Ripeti Password:</label><br>
-        <input type="password" id="fpassword" name="fpassword" required><br>
-        <p>Dai il tuo consenso per il trattamento dei dati:<br> 
-          <input type="checkbox" id="privacy" name="privacy" required>
-          <label for="privacy"><a href=https://protezionedatipersonali.it/informativa target="_blank">informativa sulla privacy</a></label>
-        </p>
-        <input type="submit" value="Registrati">
-    </fieldset>
-    </form>
+    <div class="sticky_form">
+        <form method="POST" action="registrati.php" id="registration_form">
+        <fieldset>
+            <h1 style=text-align:center>"Nome Sito"</h1>
+            <h2 style=float:right;padding-right:100px;padding-top:100px>Unisciti alla nostra community<br>e rimani sempre aggiornato!</h2>
+            <h2>Registrati</h2>
+            <label for="name">Nome:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="mail">E-mail:</label><br>
+            <input type="email" id="mail" name="mail" required><br>
+            <label for="uname">Username:</label><br>
+            <input type="text" id="uname" name="uname" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="min 6 acratteri" required><br>
+            <label for="fpassword">Ripeti Password:</label><br>
+            <input type="password" id="fpassword" name="fpassword" required><br>
+            <p>Dai il tuo consenso per il trattamento dei dati:<br> 
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy"><a href=https://protezionedatipersonali.it/informativa target="_blank">informativa sulla privacy</a></label>
+            </p>
+            <input type="submit" value="Registrati">
+        </fieldset>
+        </form>
+    </div>
     <script>
     document.getElementById('registration_form').onsubmit = function(event) {
         var email = document.getElementById('mail').value;

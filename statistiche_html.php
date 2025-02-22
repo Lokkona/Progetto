@@ -40,14 +40,18 @@ if(!$isLoggedIn){
         flex-direction: row;
         margin: 0;
         }
-/* Stile della barra di navigazione */
-.topnav {
-        display: flex; /* Layout flessibile */
-        align-items: center; /* Allinea verticalmente */
-        justify-content: space-between; /* Spaziatura tra link e immagine */
-        background-color: black;
-        padding: 10px 20px;
-    }
+        body {
+        background: url('sfondo.webp') no-repeat center center fixed;
+        background-size: cover;
+        }
+        /* Stile della barra di navigazione */
+        .topnav {
+            display: flex; /* Layout flessibile */
+            align-items: center; /* Allinea verticalmente */
+            justify-content: space-between; /* Spaziatura tra link e immagine */
+            background-color: black;
+            padding: 10px 20px;
+        }
 
     /* Stile dei link nella nav */
     .row1 {
