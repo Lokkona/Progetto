@@ -143,7 +143,7 @@
  </head>
   <body>
   <div class="sticky_form">
-  <h1>Nome Sito</h1>
+  <h1>Sport Stats Tracker</h1>
   <h2>Unisciti alla nostra community e rimani sempre aggiornato!</h2>
 
     <?php if (!empty($error_message)): ?>

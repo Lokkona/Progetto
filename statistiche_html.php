@@ -19,10 +19,10 @@ if(!$isLoggedIn){
     <link rel="stylesheet" href="statistiche.css">
 </head>
 <body>
-    <div class="header">NOME SITO</div>
+    <div class="header">Sport Stats Tracker</div>
     <div class="topnav">
         <div class="row1">
-            <a href="index.php">HOME</a>
+            <a href="index.php">HTML</a>
             <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
             <a href="storico.php">STORICO</a>
             <a href="statistiche_html.php">STATISTICHE</a>
@@ -31,7 +31,7 @@ if(!$isLoggedIn){
             <img src="immagine-utente.jpg" alt="Immagine Utente" onclick="toggleMenu()">
             <div class="dropdown-menu" id="dropdownMenu">
             <?php if ($isLoggedIn): ?>
-                <p>Ciao, <span><?php echo htmlspecialchars($uname); ?></span>!</p>
+                <p>Ciao, <?php echo htmlspecialchars($uname); ?>!</p>
                 <a href="logout.php">Logout</a>
             <?php else: ?>
                 <a href="Login.html">Login</a>
