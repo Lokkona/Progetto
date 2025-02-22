@@ -39,6 +39,7 @@ if(!$isLoggedIn){
             </div>
         </div>
     </div>
+    <div class="container">
     <div class="style">
     <h2>Storico Prestazioni Sportive</h2>
     <label for="sportFilter">Filtra per: Sport</label>
@@ -62,6 +63,7 @@ if(!$isLoggedIn){
         </thead>
         <tbody></tbody>
     </table>
+    </div>
     <script>
          document.addEventListener("DOMContentLoaded", function () {
             const sportFilter = document.getElementById("sportFilter"); // Select per il filtro
