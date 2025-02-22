@@ -80,50 +80,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
     <style>
-        .sticky_form{
-            font-family:'Lato', sans-serif;
-            color: whitesmoke;
-            background-color: black;
-            position:absolute;
-            margin-left:200px;
-            margin-right:200px;
-            margin-top:70px;
-            padding-left:50px;
-            width: 1050px;
-            height:500px;
-        }
-        .error{
-            color:red;
-            font-family:'Lato', sans-serif;
-            position:absolute;
-            padding-top:150px;
-            padding-left:600px;
-            z-index:1000;
-        }
-        body{
-            background-image: src="sfondo.webp" alt="Wallpaper" style="width:250px;height:200px;";
-            background-image: url('sfondo.webp'); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-position: center;
-            margin: 0;
-            height: 100vh;
-        }
+    body {
+        background-image: url('sfondo.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        color: whitesmoke;
+        height: 200vh; 
+        overflow-y: auto;
+    }
+
+    .sticky_form {
+        position: sticky;
+        top: 10px; 
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        width: 600px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1em;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .error {
+        color: red;
+        margin: 10px 0;
+    }
+
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
     </style>
  </head>
   <body>
-  <?php if (!empty($error_message)): ?>
-    <p><?php echo $error_message; ?></p>
-<?php endif; ?>
-<?php if (!empty($success_message)): ?>
-    <p><?php echo $success_message; ?></p>
-<?php endif; ?>
-    <div class="sticky_form">
+  <div class="sticky_form">
+  <h1>Nome Sito</h1>
+  <h2>Unisciti alla nostra community e rimani sempre aggiornato!</h2>
+
+    <?php if (!empty($error_message)): ?>
+        <div class="error"><?php echo $error_message; ?></div>
+    <?php endif; ?>
+    <?php if (!empty($success_message)): ?>
+    <div class="error"><?php echo $success_message; ?></div>
+    <?php endif; ?>
         <form method="POST" action="registrati.php" id="registration_form">
-        <fieldset>
-            <h1 style=text-align:center>"Nome Sito"</h1>
-            <h2 style=float:right;padding-right:100px;padding-top:100px>Unisciti alla nostra community<br>e rimani sempre aggiornato!</h2>
-            <h2>Registrati</h2>
             <label for="name">Nome:</label><br>
             <input type="text" id="name" name="name" required><br>
             <label for="mail">E-mail:</label><br>
@@ -139,7 +168,6 @@
                 <label for="privacy"><a href=https://protezionedatipersonali.it/informativa target="_blank">informativa sulla privacy</a></label>
             </p>
             <input type="submit" value="Registrati">
-        </fieldset>
         </form>
     </div>
     <script>
