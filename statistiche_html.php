@@ -31,7 +31,7 @@ if(!$isLoggedIn){
             <img src="immagine-utente.jpg" alt="Immagine Utente" onclick="toggleMenu()">
             <div class="dropdown-menu" id="dropdownMenu">
             <?php if ($isLoggedIn): ?>
-                <p>Ciao, <?php echo htmlspecialchars($uname); ?>!</p>
+                <p>Ciao, <span><?php echo htmlspecialchars($uname); ?></span>!</p>
                 <a href="logout.php">Logout</a>
             <?php else: ?>
                 <a href="Login.html">Login</a>
