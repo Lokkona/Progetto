@@ -17,7 +17,6 @@ if(!$isLoggedIn){
     <title>Statistiche Medie</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <link rel="stylesheet" href="statistiche.css">
-
 </head>
 <body>
     <div class="header">NOME SITO</div>
