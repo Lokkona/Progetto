@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Sfondo del corpo */
+
         body {
             background-image: url('sfondo.webp');
             background-size: cover;
@@ -19,6 +19,7 @@
             align-items: center;
             font-family: 'Lato', sans-serif;
             color: whitesmoke;
+            overflow-y: auto;
         }
 
         .style1, .style2, .style3 {
@@ -45,6 +46,13 @@
         .style2 h1 {
             font-size: 2em;
             margin-bottom: 10px;
+        }
+
+        .style2 {
+        position: sticky;
+        top: 10px; 
+        z-index: 10; 
+        background-color: rgba(0, 0, 0, 0.85);
         }
 
         form {
