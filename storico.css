@@ -12,9 +12,9 @@ table { width: 100%; border-collapse: collapse; }
     display: flex; /* Layout flessibile */
     align-items: center; /* Allinea verticalmente */
     justify-content: space-between; /* Spaziatura tra link e immagine */
-    background-color: whitesmoke;
+    background-color: black;
     padding: 10px 20px;
-    font-family:'Lato', sans-serif;
+    font-family:'Arial', sans-serif;
 }
 
 /* Stile dei link nella nav */
@@ -70,20 +70,20 @@ table { width: 100%; border-collapse: collapse; }
     background-color: #f0f0f0;
 }
 .style{
-    font-family:'Lato', sans-serif;
-    background-color:black;
-    color: whitesmoke;
+    font-family:'Arial', sans-serif;
+    background-color:rgba(255, 255, 0, 0.675);
+    color: black;
     padding: 10px 20px;
 }
 tr{
-    background-color: rgb(255, 111, 0);
-    font-family:'Lato', sans-serif;
+    background-color: rgba(255, 255, 0, 0.675);
+    font-family:'Arial', sans-serif;
 }
 th{
-    background-color: rgb(255, 111, 0);
+    background-color: orange;
 }
 .header{
-    background-color: rgb(255, 111, 0);
+    background-color: orange;
     color: black;
     text-align: center;
     padding: 20px;
@@ -102,4 +102,17 @@ th{
     height: 50px;
     position: relative;
     bottom: 0; /* Assicura che il footer stia sempre in fondo */
+}
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
 }
