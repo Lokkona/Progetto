@@ -14,6 +14,10 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
         flex-direction: row;
         margin: 0;
         }
+        body {
+        background: url('sfondo.webp') no-repeat center center fixed;
+        background-size: cover;
+        }
 /* Stile della barra di navigazione */
     .topnav {
         display: flex; /* Layout flessibile */

@@ -84,7 +84,10 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
         z-index: 10;
         width: 180px;
     }
-
+    body {
+        background: url('sfondo.webp') no-repeat center center fixed;
+        background-size: cover;
+        }
     /* Stile delle voci del menu */
     .dropdown-menu a {
         display: block;
