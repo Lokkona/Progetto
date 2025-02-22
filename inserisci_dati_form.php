@@ -1,7 +1,7 @@
 <?php
 session_start();
-$isLoggedIn = isset($_SESSION['user_id']);
-$uname = $isLoggedIn ? $_SESSION['uname'] : '';
+$isLoggedIn = isset($_SESSION["user_id"]);
+$uname = $isLoggedIn ? $_SESSION["uname"] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
