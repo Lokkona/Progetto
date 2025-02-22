@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POS
     }
     $mail=$_POST["mail"];
     $fpassword=$_POST["fpassword"];
-    $query="SELECT id, pass FROM utente WHERE mail=$1";
+    $query="SELECT id, pass, uname FROM utente WHERE mail=$1";
     $result=pg_query_params($db, $query, array($mail));
     if($result){
       $row = pg_fetch_assoc($result);
