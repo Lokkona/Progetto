@@ -11,7 +11,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserisci_dati</title>
     <link rel="stylesheet" href="inserisci_dati.css">
-
+</head>
 
 <body>
 <div class="header">NOME SITO</div>

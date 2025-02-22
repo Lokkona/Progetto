@@ -31,12 +31,14 @@
     background-color: black;
     padding: 5px 20px;
     flex-wrap: wrap;
+    font-family:'Lato', sans-serif;
 }
 
 
 .row1 {
     display: flex;
     gap: 10px;
+    font-family:'Lato', sans-serif;
 }
 
 .row1 a {
@@ -86,21 +88,23 @@
     background-color: #f0f0f0;
 }
 .header{
-    background-color: orange;
+    background-color: rgb(255, 111, 0);
     color: black;
     text-align: center;
     padding: 20px;
     margin: 0px;
-    height: 100px;
+    height: 90px;
     font-size: 2.5em;
     font-weight: bold;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Lato', sans-serif;
 }
 /* Impostazione del layout globale */
 html, body {
     height: 100%;  /* Garantisce che il body occupi l'intera altezza */
     margin: 0;     /* Rimuove il margine predefinito */
+    font-family: 'Lato', sans-serif;
 }
 
 body {
