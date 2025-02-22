@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-     body {
+        /* Sfondo del corpo */
+        body {
             background-image: url('sfondo.webp');
             background-size: cover;
             background-repeat: no-repeat;
@@ -17,89 +17,110 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-family: 'Lato', sans-serif;
+            color: whitesmoke;
         }
 
-        /* Contenitore del sito */
         .style1, .style2, .style3 {
             background-color: black;
             color: whitesmoke;
-            font-family: 'Lato', sans-serif;
             text-align: center;
             width: 600px;
-            margin: 20px;
             padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
         }
 
-        /* Titolo principale */
-        .style1 {
+        .style1 h1 {
             font-size: 2.5em;
+            margin: 0;
         }
 
-        /* Sezione login */
-        .style2 {
+        .style1 h2 {
             font-size: 1.2em;
+            margin-top: 10px;
         }
 
-        /* Testo registrazione */
-        .style3 {
-            font-size: 1.2em;
+        .style2 h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
 
-        /* Modifica input form */
-        input[type="email"], input[type="password"] {
-            width: 100%;
+        form {
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 22px);
             padding: 10px;
-            margin: 10px 0;
             font-size: 1em;
             border-radius: 5px;
             border: 1px solid #ccc;
+            margin-bottom: 10px;
         }
 
-        /* Pulsante di login */
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 10px 0;
             width: 100%;
             border: none;
             border-radius: 5px;
             font-size: 1.2em;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
 
+        .style3 {
+            background-color: transparent;
+            color: whitesmoke;
+        }
+
         a {
             color: #4CAF50;
             text-decoration: none;
+            font-weight: bold;
         }
 
         a:hover {
             text-decoration: underline;
         }
     </style>
-    <title>"Nome Sito"</title>
+    <title>Nome Sito</title>
 </head>
 <body>
     <div class="style1">
-        <h1>"Nome Sito"</h1>
-        <h2>Benvenuto su "Nome sito", il tuo sito di riferimento per tutte le notizie del mondo calcistico</h2>
+        <h1>Nome Sito</h1>
+        <h2>Benvenuto su "Nome Sito", il tuo sito di riferimento per tutte le notizie del mondo calcistico</h2>
     </div>
+
     <div class="style2">
         <h1>Effettua il login</h1>
         <form action="login-manager.php" method="POST">
-            <fieldset>
-                <label for="mail">E-mail:</label><br>
-                <input type="email" id="mail" name="mail" required><br>
-                <label for="fpassword">Password:</label><br>
-                <input type="password" id="fpassword" name="fpassword" required><br>
-            </fieldset>
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" name="mail" required>
+
+            <label for="fpassword">Password:</label>
+            <input type="password" id="fpassword" name="fpassword" required>
+
             <input type="submit" value="Login">
         </form>
     </div>
-        <p><h3 class="style3">Non hai un account?<a href="registrati.php"> Registrati</a></h3></p>
+
+    <div class="style3">
+        <h3>Non hai un account? <a href="registrati.php">Registrati</a></h3>
+    </div>
 </body>
 </html>
