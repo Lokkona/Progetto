@@ -15,7 +15,7 @@ if(!$isLoggedIn){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico Prestazioni</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="storico.css">
 </head>
 <body>
 <div class="header">NOME SITO</div>
@@ -36,8 +36,8 @@ if(!$isLoggedIn){
                 <a href="Login.html">Login</a>
                 <a href="registrati.php">Registrati</a>
             <?php endif; ?>
-            </div>
         </div>
+    </div>
     </div>
     <div class="style">
     <h2>Storico Prestazioni Sportive</h2>
@@ -50,8 +50,9 @@ if(!$isLoggedIn){
     </select>
     <label for="dateFilter">Data</label>
     <input type="date" id="dateFilter">
+    </div>
     <table id="prestazioniTable">
-        <thead class="style1">
+        <thead>
             <tr>
                 <th>Data Evento</th>
                 <th>Sport</th>
@@ -61,7 +62,6 @@ if(!$isLoggedIn){
         </thead>
         <tbody></tbody>
     </table>
-    </div>
     <script>
          document.addEventListener("DOMContentLoaded", function () {
             const sportFilter = document.getElementById("sportFilter"); // Select per il filtro
@@ -128,6 +128,6 @@ if(!$isLoggedIn){
         });
     }
     </script>
-
+    <div class="footer"></div>
 </body>
 </html>
