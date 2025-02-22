@@ -12,7 +12,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <title>Inserisci_dati</title>
     <link rel="stylesheet" href="inserisci_dati.css">
 
-
+</head>
 <body>
 <div class="header">NOME SITO</div>
     <div class="topnav">

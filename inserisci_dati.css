@@ -56,7 +56,7 @@
 .row2 img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; /* Immagine rotonda */
+    border-radius: 50%; 
     object-fit: cover;
 }
 
@@ -97,19 +97,20 @@
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
-/* Impostazione del layout globale */
+
 html, body {
-    height: 800px;  /* Garantisce che il body occupi l'intera altezza */
-    margin: 0;     /* Rimuove il margine predefinito */
+    height: 800px;  
+    margin: 0;     
 }
 
 body {
     display: flex;
-    flex-direction: column;  /* Dispone gli elementi in colonna */
+    flex-direction: column;  
+    overflow-x: hidden;
 }
 
 .container {
-    flex-grow: 1;  /* Consente al contenuto di crescere e occupare lo spazio rimanente */
+    flex-grow: 1;  
 }
 
 .footer {
@@ -118,5 +119,5 @@ body {
     padding: 10px;
     height: 50px;
     position: relative;
-    bottom: 0; /* Assicura che il footer stia sempre in fondo */
+    bottom: 0; 
 }

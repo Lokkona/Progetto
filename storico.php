@@ -101,7 +101,7 @@ if(!$isLoggedIn){
         color:black;
     }
 </style>
-
+</head>
 <body>
     <div class="topnav">
         <div class="row1">

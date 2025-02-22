@@ -31,6 +31,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
             <?php endif; ?>
             </div>
         </div>
+
         </div>
         <div class="welcome-section">
         <div class="welcome-text">
