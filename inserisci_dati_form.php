@@ -178,7 +178,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
         </div>
     </form>
     </div>
-    <div class="footer"></div>
+    <div class="footer"><p>&copy; 2024 Sports Stats Tracker. Tutti i diritti riservati.</p></div>
     <script>
         function mostraSport(){
             const formSport=document.querySelectorAll('.formSport');
