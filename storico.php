@@ -15,6 +15,7 @@ if(!$isLoggedIn){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico Prestazioni</title>
+<<<<<<< HEAD
     <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { border: 1px solid black; padding: 8px; text-align: left; }
@@ -101,8 +102,12 @@ if(!$isLoggedIn){
         color:black;
     }
 </style>
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 4de35b7c1fcbf03711b8ed44e55b0ab21dc29365
 </head>
 <body>
+<div class="header">NOME SITO</div>
     <div class="topnav">
         <div class="row1">
             <a href="index.php">NOME SITO</a>

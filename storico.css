@@ -1,40 +1,27 @@
-.flex-container {
+
+table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid black; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    select { margin-bottom: 10px; padding: 5px; }
+    .flex-container {
     display: flex;
     flex-direction: row;
     margin: 0;
 }
-
-.hide {
-    display: none;
+body {
+    background: url('sfondo.webp') no-repeat center center fixed;
+    background-size: cover;
 }
-
-.error {
-    color: red;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid red;
-    background-color: #ffe6e6;
-}
-
-.success {
-    color: green;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid green;
-    background-color: #e6ffe6;
-}
-
 .topnav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; /* Layout flessibile */
+    align-items: center; /* Allinea verticalmente */
+    justify-content: space-between; /* Spaziatura tra link e immagine */
     background-color: black;
-    padding: 5px 20px;
-    flex-wrap: wrap;
+    padding: 10px 20px;
     font-family:'Lato', sans-serif;
 }
 
-
+/* Stile dei link nella nav */
 .row1 {
     display: flex;
     gap: 10px;
@@ -54,11 +41,11 @@
     background-color: grey;
 }
 
-
+/* Stile immagine utente */
 .row2 img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; 
+    border-radius: 50%; /* Immagine rotonda */
     object-fit: cover;
 }
 
@@ -75,7 +62,7 @@
     width: 180px;
 }
 
-
+/* Stile delle voci del menu */
 .dropdown-menu a {
     display: block;
     padding: 10px 20px;
@@ -86,6 +73,14 @@
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
+}
+.style{
+    font-family:'Lato', sans-serif;
+    background-color:black;
+    color:whitesmoke;
+}
+.style1{
+    color:black;
 }
 .header{
     background-color: rgb(255, 111, 0);
@@ -99,29 +94,4 @@
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     font-family: 'Lato', sans-serif;
-}
-
-html, body {
-    height: 800px;  /* Garantisce che il body occupi l'intera altezza */
-    margin: 0;     /* Rimuove il margine predefinito */
-    font-family: 'Lato', sans-serif;
-}
-
-body {
-    display: flex;
-    flex-direction: column;  
-    overflow-x: hidden;
-}
-
-.container {
-    flex-grow: 1;  
-}
-
-.footer {
-    width: 100%;
-    background-color: black;
-    padding: 10px;
-    height: 50px;
-    position: relative;
-    bottom: 0; 
 }

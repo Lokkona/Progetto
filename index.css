@@ -92,9 +92,34 @@ html, body {
     background-color: #f0f0f0;
 }
 
+<<<<<<< HEAD
 /* Container principale */
 .container {
     flex-grow: 1;
+=======
+.header{
+    background-color: rgb(255, 111, 0);
+    color: black;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    height: 70px;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.footer{
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    height: 50px;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+>>>>>>> 4de35b7c1fcbf03711b8ed44e55b0ab21dc29365
 }
 
 /* Welcome Section e Features */
