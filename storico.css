@@ -80,10 +80,10 @@ tr{
     font-family:'Arial', sans-serif;
 }
 th{
-    background-color: rgb(255, 111, 0);
+    background-color: orange;
 }
 .header{
-    background-color: rgb(255, 111, 0);
+    background-color: orange;
     color: black;
     text-align: center;
     padding: 20px;
