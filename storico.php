@@ -5,7 +5,7 @@ session_start();
 $isLoggedIn = isset($_SESSION['user_id']);
 $uname = $isLoggedIn ? $_SESSION['uname'] : '';
 if(!$isLoggedIn){
-    header("Location: login.html");
+    header("Location: Login.html");
     exit;
 }
 ?>
@@ -117,7 +117,7 @@ if(!$isLoggedIn){
                 <p>Ciao, <?php echo htmlspecialchars($uname); ?>!</p>
                 <a href="logout.php">Logout</a>
             <?php else: ?>
-                <a href="login.php">Login</a>
+                <a href="Login.html">Login</a>
                 <a href="registrati.php">Registrati</a>
             <?php endif; ?>
             </div>

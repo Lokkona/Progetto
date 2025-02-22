@@ -26,7 +26,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
                 <p>Ciao, <?php echo htmlspecialchars($uname); ?>!</p>
                 <a href="logout.php">Logout</a>
             <?php else: ?>
-                <a href="login.html">Login</a>
+                <a href="Login.html">Login</a>
                 <a href="registrati.php">Registrati</a>
             <?php endif; ?>
             </div>
