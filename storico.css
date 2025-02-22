@@ -3,7 +3,8 @@ table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid black; padding: 8px; text-align: left; }
     th { background-color: #f4f4f4; }
     select { margin-bottom: 10px; padding: 5px; }
-    .flex-container {
+
+ .flex-container {
     display: flex;
     flex-direction: row;
     margin: 0;
@@ -113,13 +114,12 @@ th{
 }
 
 html, body {
-    height: 100%;
     min-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto;
     font-family: Arial, sans-serif;
+    background-color: whitesmoke;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -146,4 +146,9 @@ input{
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+.container {
+    flex-grow: 1; 
+    padding: 20px;
+    margin-bottom: 100px; 
 }
