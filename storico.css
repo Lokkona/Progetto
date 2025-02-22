@@ -9,15 +9,15 @@ table { width: 100%; border-collapse: collapse; }
     margin: 0;
 }
 .topnav {
-    display: flex; /* Layout flessibile */
-    align-items: center; /* Allinea verticalmente */
-    justify-content: space-between; /* Spaziatura tra link e immagine */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
     background-color: black;
     padding: 10px 20px;
     font-family:'Arial', sans-serif;
 }
 
-/* Stile dei link nella nav */
+
 .row1 {
     display: flex;
     gap: 10px;
@@ -36,11 +36,11 @@ table { width: 100%; border-collapse: collapse; }
     background-color: grey;
 }
 
-/* Stile immagine utente */
+
 .row2 img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; /* Immagine rotonda */
+    border-radius: 50%; 
     object-fit: cover;
 }
 
@@ -57,7 +57,7 @@ table { width: 100%; border-collapse: collapse; }
     width: 180px;
 }
 
-/* Stile delle voci del menu */
+
 .dropdown-menu a {
     display: block;
     padding: 10px 20px;
@@ -69,6 +69,7 @@ table { width: 100%; border-collapse: collapse; }
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
 }
+
 .style{
     font-family:'Arial', sans-serif;
     background-color:whitesmoke;
@@ -82,6 +83,7 @@ tr{
 th{
     background-color: orange;
 }
+
 .header{
     background-color: orange;
     color: black;
@@ -95,20 +97,28 @@ th{
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     font-family: 'Lato', sans-serif;
 }
+
 .footer {
+    width: 100%;
     background-color: black;
+    padding: 10px;
+    height: 50px;
+    position: relative;
+    bottom: 0;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
-    font-size: 0.9em; /* Assicura che il footer stia sempre in fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 html, body {
     height: 100%;
     min-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: auto;
     font-family: Arial, sans-serif;
     background-size: cover;
     background-repeat: no-repeat;
