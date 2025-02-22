@@ -71,12 +71,12 @@ table { width: 100%; border-collapse: collapse; }
 }
 .style{
     font-family:'Arial', sans-serif;
-    background-color:rgba(255, 255, 0, 0.675);
+    background-color:whitesmoke;
     color: black;
     padding: 10px 20px;
 }
 tr{
-    background-color: rgba(255, 255, 0, 0.675);
+    background-color: whitesmoke;
     font-family:'Arial', sans-serif;
 }
 th{
@@ -96,12 +96,12 @@ th{
     font-family: 'Lato', sans-serif;
 }
 .footer {
-    width: 99%;
     background-color: black;
-    padding: 10px;
-    height: 50px;
-    position: relative;
-    bottom: 0; /* Assicura che il footer stia sempre in fondo */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    font-size: 0.9em; /* Assicura che il footer stia sempre in fondo */
 }
 html, body {
     height: 100%;
@@ -115,4 +115,25 @@ html, body {
     background-position: center;
     display: flex;
     flex-direction: column;
+}
+option{
+    background-color: orange;
+}
+select{
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+input{
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }

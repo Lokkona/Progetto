@@ -128,6 +128,6 @@ if(!$isLoggedIn){
         });
     }
     </script>
-    <div class="footer"></div>
+    <div class="footer"><p>&copy; 2024 Sports Stats Tracker. Tutti i diritti riservati.</p></div>
 </body>
 </html>
