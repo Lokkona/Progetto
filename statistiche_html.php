@@ -13,6 +13,7 @@ if(!$isLoggedIn){
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Statistiche Medie</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
@@ -39,10 +40,6 @@ if(!$isLoggedIn){
         display: flex;
         flex-direction: row;
         margin: 0;
-        }
-        body {
-        background: url('sfondo.webp') no-repeat center center fixed;
-        background-size: cover;
         }
         /* Stile della barra di navigazione */
         .topnav {
