@@ -149,12 +149,12 @@ input, select {
 }
 
 input:focus, select:focus {
-    border-color: #ff7f50;
+    border-color: orange;
     outline: none;
 }
 
 button {
-    background-color: #ff7f50;
+    background-color: orange;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -164,7 +164,7 @@ button {
 }
 
 button:hover {
-    background-color: #e66e40;
+    background-color: orange;
 }
 
 
