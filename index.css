@@ -1,18 +1,46 @@
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-image: url('sfondo.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background-color: orange;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    height: 70px;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Navbar */
 .flex-container {
     display: flex;
     flex-direction: row;
     margin: 0;
-    }
+}
 
-    .topnav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: black;
-        padding: 5px 20px;
-        flex-wrap: wrap;
-    }
-
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 5px 20px;
+    flex-wrap: wrap;
+}
 
 .row1 {
     display: flex;
@@ -32,11 +60,10 @@
     background-color: grey;
 }
 
-
 .row2 img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; 
+    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -53,7 +80,6 @@
     width: 180px;
 }
 
-
 .dropdown-menu a {
     display: block;
     padding: 10px 20px;
@@ -65,6 +91,8 @@
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
 }
+
+/* Container principale */
 
 .header{
     background-color: rgb(255, 111, 0);
@@ -90,10 +118,11 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Welcome Section e Features */
 .welcome-section {
     text-align: center;
     padding: 40px 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -109,7 +138,7 @@ body {
 }
 
 .feature-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -133,31 +162,29 @@ body {
 .feature-card a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: orange;
+    color: black;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 .feature-card a:hover {
-    background-color: #0056b3;
+    background-color: #ffa500cc;
 }
-.welcome-text {
-    max-width: 800px;
-    margin: 0 auto;
-}
-.user-greeting {
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 20px;
-}
-body{
-    background-image: src="sfondo.webp" alt="Wallpaper" style="width:250px;height:200px;";
-    background-image: url('sfondo.webp'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center;
-    margin: 0;
-    height: 100vh;
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    height: 50px;
+    position: relative;
+    bottom: 0;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

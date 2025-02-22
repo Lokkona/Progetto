@@ -103,7 +103,7 @@ if(!$isLoggedIn){
         background-color: #f0f0f0;
     }
 </style>
-
+</head>
 <body>
     <div class="topnav">
         <div class="row1">

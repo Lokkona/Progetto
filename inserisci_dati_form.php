@@ -11,8 +11,13 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserisci_dati</title>
     <link rel="stylesheet" href="inserisci_dati.css">
+<<<<<<< HEAD
+
+</head>
+=======
 </head>
 
+>>>>>>> 4de35b7c1fcbf03711b8ed44e55b0ab21dc29365
 <body>
 <div class="header">NOME SITO</div>
     <div class="topnav">
