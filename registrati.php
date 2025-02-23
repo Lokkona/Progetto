@@ -188,16 +188,109 @@
         </form>
     </div>
     <script>
-    document.getElementById('registration_form').onsubmit = function(event) {
-        var email = document.getElementById('mail').value;
-        var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+function validateForm(event) {
+    event.preventDefault();
 
-        if (!pattern.test(email)) {
-            alert('Email non valida!');
-            event.preventDefault();
-        }
-    };
-    document.getElementById('geolocation').addEventListener('change', function() {
+    clearErrors();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('mail').value.trim();
+    const username = document.getElementById('uname').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('fpassword').value;
+    const privacy = document.getElementById('privacy').checked;
+    
+    let isValid = true;
+
+    if (name.length < 2) {
+        showError('name', 'Il nome deve contenere almeno 2 caratteri');
+        isValid = false;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        showError('mail', 'Inserisci un indirizzo email valido');
+        isValid = false;
+    }
+
+    if (username.length < 3) {
+        showError('uname', 'Lo username deve contenere almeno 3 caratteri');
+        isValid = false;
+    }
+    if (/\s/.test(username)) {
+        showError('uname', 'Lo username non può contenere spazi');
+        isValid = false;
+    }
+
+    if (password.length < 8) {
+        showError('password', 'La password deve contenere almeno 8 caratteri');
+        isValid = false;
+    }
+    if (!/[A-Z]/.test(password)) {
+        showError('password', 'La password deve contenere almeno una lettera maiuscola');
+        isValid = false;
+    }
+    if (!/[0-9]/.test(password)) {
+        showError('password', 'La password deve contenere almeno un numero');
+        isValid = false;
+    }
+    if (!/[!@#$%^&*]/.test(password)) {
+        showError('password', 'La password deve contenere almeno un carattere speciale (!@#$%^&*)');
+        isValid = false;
+    }
+
+    if (password !== confirmPassword) {
+        showError('fpassword', 'Le password non coincidono');
+        isValid = false;
+    }
+
+    if (!privacy) {
+        showError('privacy', 'Devi accettare l\'informativa sulla privacy');
+        isValid = false;
+    }
+m
+    if (isValid) {
+        event.target.submit();
+    }
+}
+
+function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = 'red';
+    errorDiv.style.fontSize = '0.8em';
+    errorDiv.style.marginTop = '5px';
+    errorDiv.textContent = message;
+    
+    field.parentNode.insertBefore(errorDiv, field.nextSibling);
+    field.style.borderColor = 'red';
+}
+
+function clearErrors() {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => error.remove());
+    
+    const fields = document.querySelectorAll('input');
+    fields.forEach(field => field.style.borderColor = '');
+}
+
+function setupLiveValidation() {
+    const fields = ['name', 'mail', 'uname', 'password', 'fpassword'];
+    
+    fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('input', function() {
+            const errorMessage = this.nextSibling;
+            if (errorMessage && errorMessage.className === 'error-message') {
+                errorMessage.remove();
+            }
+            this.style.borderColor = '';
+        });
+    });
+}
+
+document.getElementById('geolocation').addEventListener('change', function() {
     if (this.checked) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -207,7 +300,7 @@
                 },
                 function(error) {
                     alert('Errore nella geolocalizzazione: ' + error.message);
-                    document.getElementById('geolocation').checked = false; 
+                    document.getElementById('geolocation').checked = false;
                 }
             );
         } else {
@@ -215,28 +308,35 @@
             document.getElementById('geolocation').checked = false;
         }
     }
-    });
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        let passwordField = document.getElementById('password');
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            this.innerText = '🙈'; 
-        } else {
-            passwordField.type = 'password';
-            this.innerText = '👁️';
-        }
-    });
+});
 
-    document.getElementById('toggleFPassword').addEventListener('click', function() {
-        let passwordField = document.getElementById('fpassword');
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            this.innerText = '🙈';
-        } else {
-            passwordField.type = 'password';
-            this.innerText = '👁️';
-        }
-    });
+document.getElementById('togglePassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('password');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        this.innerText = '🙈';
+    } else {
+        passwordField.type = 'password';
+        this.innerText = '👁️';
+    }
+});
+
+document.getElementById('toggleFPassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('fpassword');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        this.innerText = '🙈';
+    } else {
+        passwordField.type = 'password';
+        this.innerText = '👁️';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registration_form');
+    form.addEventListener('submit', validateForm);
+    setupLiveValidation();
+});
     </script>
     </body>
 </html>
