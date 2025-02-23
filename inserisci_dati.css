@@ -176,3 +176,36 @@ button:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.error {
+    background-color: #fff3f3;
+    border: 2px solid #dc3545;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #dc3545;
+    font-family: Arial, sans-serif;
+}
+
+.error ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.error li {
+    margin: 5px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.error li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.error li:hover {
+    background-color: #ffe9e9;
+}
