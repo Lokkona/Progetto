@@ -143,7 +143,7 @@
  </head>
   <body>
   <div class="sticky_form">
-  <h1>Nome Sito</h1>
+  <h1>Sport Stats Tracker</h1>
   <h2>Unisciti alla nostra community e rimani sempre aggiornato!</h2>
 
     <?php if (!empty($error_message)): ?>
@@ -160,14 +160,31 @@
             <label for="uname">Username:</label><br>
             <input type="text" id="uname" name="uname" required><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" placeholder="min 6 acratteri" required><br>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="password" name="password" required style="width: 100%; padding-right: 40px;">
+                <span id="togglePassword" style="position: absolute; right: 10px; cursor: pointer;">
+                    👁️
+                </span>
+            </div>
             <label for="fpassword">Ripeti Password:</label><br>
-            <input type="password" id="fpassword" name="fpassword" required><br>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="fpassword" name="fpassword" required style="width: 100%; padding-right: 40px;">
+                <span id="toggleFPassword" style="position: absolute; right: 10px; cursor: pointer;">
+                    👁️
+                </span>
+            </div>
             <p>Dai il tuo consenso per il trattamento dei dati:<br> 
                 <input type="checkbox" id="privacy" name="privacy" required>
                 <label for="privacy"><a href=https://protezionedatipersonali.it/informativa target="_blank">informativa sulla privacy</a></label>
             </p>
-            <input type="submit" value="Registrati">
+            <p>
+                Acconsenti alla geolocalizzazione:<br> 
+                <input type="checkbox" id="geolocation" name="geolocation">
+                <label for="geolocation">Attiva la geolocalizzazione</label>
+            </p>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+                <input type="submit" value="Registrati">
         </form>
     </div>
     <script>
@@ -180,6 +197,46 @@
             event.preventDefault();
         }
     };
+    document.getElementById('geolocation').addEventListener('change', function() {
+    if (this.checked) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                },
+                function(error) {
+                    alert('Errore nella geolocalizzazione: ' + error.message);
+                    document.getElementById('geolocation').checked = false; // Deseleziona se fallisce
+                }
+            );
+        } else {
+            alert('Il tuo browser non supporta la geolocalizzazione.');
+            document.getElementById('geolocation').checked = false;
+        }
+    }
+});
+document.getElementById('togglePassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('password');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        this.innerText = '🙈'; 
+    } else {
+        passwordField.type = 'password';
+        this.innerText = '👁️';
+    }
+});
+
+document.getElementById('toggleFPassword').addEventListener('click', function() {
+    let passwordField = document.getElementById('fpassword');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        this.innerText = '🙈';
+    } else {
+        passwordField.type = 'password';
+        this.innerText = '👁️';
+    }
+});
     </script>
     </body>
 </html>

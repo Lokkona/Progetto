@@ -14,7 +14,7 @@ table { width: 100%; border-collapse: collapse; }
     align-items: center; 
     justify-content: space-between; 
     background-color: black;
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-family:'Arial', sans-serif;
 }
 
@@ -77,12 +77,21 @@ table { width: 100%; border-collapse: collapse; }
     color: black;
     padding: 10px 20px;
 }
-tr{
-    background-color: whitesmoke;
-    font-family:'Arial', sans-serif;
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px; /* Arrotonda gli angoli della tabella */
+    overflow: hidden; /* Evita che i bordi interni siano visibili */
+    border: 2px solid orange; /* Bordo per evidenziare meglio la tabella */
 }
-th{
+
+th, td {
+    padding: 10px;
+}
+
+th {
     background-color: orange;
+    color: white;
 }
 
 .header{
@@ -94,7 +103,6 @@ th{
     height: 70px;
     font-size: 2.5em;
     font-weight: bold;
-    margin: 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     font-family: 'Lato', sans-serif;
 }
@@ -131,7 +139,7 @@ option{
 }
 select{
     background-color: orange;
-    color: black;
+    color: whitesmoke;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -140,7 +148,7 @@ select{
 }
 input{
     background-color: orange;
-    color: black;
+    color: whitesmoke;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;

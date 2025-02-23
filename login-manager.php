@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POS
             if(password_verify($fpassword, $row["pass"])){
                 $_SESSION["user_id"] = $row["id"];
                 $_SESSION["user_mail"] = $mail;
-                $_SESSION['uname'] = $row['uname'];
+                $_SESSION["uname"] = $row["uname"];
                header("Location: index.php");
             }
         } else {

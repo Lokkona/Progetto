@@ -11,7 +11,7 @@ $uname = $isLoggedIn ? $_SESSION['uname'] : '';
     <link rel="stylesheet" href="index.css">
 
 <body>
-    <div class="header">NOME SITO</div>
+    <div class="header">Sport Stats Tracker</div>
     <div class="topnav">
         <div class="row1">
             <a href="index.php">HOME</a>
