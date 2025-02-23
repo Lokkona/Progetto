@@ -67,7 +67,7 @@ function validateTennisStats($data) {
     return $error_message;
 }
 
-  $connection_string="host=localhost port=5432 dbname=miodatabase user=www password=1Nf4m303";
+  $connection_string="host=localhost port=5432 dbname=gruppo21 user=www password=tw2024";
 
   $db=pg_connect($connection_string) or die('Errore nella connessione al database' . pg_last_error());
 
