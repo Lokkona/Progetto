@@ -5,13 +5,11 @@ function validateForm(event) {
     let isValid = true;
     let errorMessages = [];
 
-    // Validate date
     if (!data) {
         errorMessages.push("La data è obbligatoria");
         isValid = false;
     }
 
-    // Sport-specific validations
     switch(sport) {
         case 'basket':
             isValid = validateBasket(errorMessages);
@@ -27,7 +25,6 @@ function validateForm(event) {
             isValid = false;
     }
 
-    // Display errors or submit form
     if (!isValid) {
         showErrors(errorMessages);
     } else {
@@ -38,14 +35,12 @@ function validateForm(event) {
 function validateBasket(errorMessages) {
     let isValid = true;
     
-    // Minutes validation
     const minuti = parseInt(document.getElementById('minuti_basket').value);
     if (minuti < 0 || minuti > 48) {
         errorMessages.push("I minuti giocati devono essere tra 0 e 48");
         isValid = false;
     }
 
-    // Shots validation
     const tiriTentati = parseInt(document.getElementById('tiri_t').value);
     const tiriRealizzati = parseInt(document.getElementById('makes').value);
     if (tiriRealizzati > tiriTentati) {
@@ -53,7 +48,6 @@ function validateBasket(errorMessages) {
         isValid = false;
     }
 
-    // Three pointers validation
     const tiri3Tentati = parseInt(document.getElementById('tiri3').value);
     const tiri3Realizzati = parseInt(document.getElementById('makes3').value);
     if (tiri3Realizzati > tiri3Tentati) {
@@ -61,7 +55,6 @@ function validateBasket(errorMessages) {
         isValid = false;
     }
 
-    // Free throws validation
     const ftTentati = parseInt(document.getElementById('fta').value);
     const ftRealizzati = parseInt(document.getElementById('ft').value);
     if (ftRealizzati > ftTentati) {
@@ -69,7 +62,6 @@ function validateBasket(errorMessages) {
         isValid = false;
     }
 
-    // Rebounds validation
     const rimbalziTotali = parseInt(document.getElementById('rimbalzi').value);
     const rimbalziOff = parseInt(document.getElementById('rimbalzi_offensivi').value);
     const rimbalziDif = parseInt(document.getElementById('rimbalzi_difensivi').value);
@@ -84,14 +76,12 @@ function validateBasket(errorMessages) {
 function validateCalcio(errorMessages) {
     let isValid = true;
 
-    // Minutes validation
     const minuti = parseInt(document.getElementById('minuti_calcio').value);
     if (minuti < 0 || minuti > 90) {
         errorMessages.push("I minuti giocati devono essere tra 0 e 90");
         isValid = false;
     }
 
-    // Shots validation
     const tiri = parseInt(document.getElementById('tiri').value);
     const tiriPorta = parseInt(document.getElementById('tiri_in_porta').value);
     const gol = parseInt(document.getElementById('gol').value);
@@ -104,7 +94,6 @@ function validateCalcio(errorMessages) {
         isValid = false;
     }
 
-    // Passes validation
     const passaggiTentati = parseInt(document.getElementById('passaggi_tentati').value);
     const passaggiRiusciti = parseInt(document.getElementById('passaggi_riusciti').value);
     if (passaggiRiusciti > passaggiTentati) {
@@ -112,7 +101,6 @@ function validateCalcio(errorMessages) {
         isValid = false;
     }
 
-    // Dribbling validation
     const dribblingTentati = parseInt(document.getElementById('dribbling_tentati').value);
     const dribblingRiusciti = parseInt(document.getElementById('dribbling_riusciti').value);
     if (dribblingRiusciti > dribblingTentati) {
@@ -126,7 +114,6 @@ function validateCalcio(errorMessages) {
 function validateTennis(errorMessages) {
     let isValid = true;
 
-    // Points validation
     const puntiGiocati = parseInt(document.getElementById('punti_giocati').value);
     const puntiVinti = parseInt(document.getElementById('punti_vinti').value);
     if (puntiVinti > puntiGiocati) {
@@ -134,7 +121,6 @@ function validateTennis(errorMessages) {
         isValid = false;
     }
 
-    // First serve validation
     const primeGiocate = parseInt(document.getElementById('prima_g').value);
     const primeInCampo = parseInt(document.getElementById('prima_r').value);
     const primeVinte = parseInt(document.getElementById('prima_v').value);
@@ -147,7 +133,6 @@ function validateTennis(errorMessages) {
         isValid = false;
     }
 
-    // Break points validation
     const breakPoints = parseInt(document.getElementById('break').value);
     const breakPointsConverted = parseInt(document.getElementById('break_v').value);
     if (breakPointsConverted > breakPoints) {
@@ -155,7 +140,6 @@ function validateTennis(errorMessages) {
         isValid = false;
     }
 
-    // Return points validation
     const rispostaGiocati = parseInt(document.getElementById('risposta_g').value);
     const rispostaVinti = parseInt(document.getElementById('risposta_v').value);
     if (rispostaVinti > rispostaGiocati) {
@@ -167,18 +151,20 @@ function validateTennis(errorMessages) {
 }
 
 function showErrors(errors) {
-    // Remove any existing error messages
     const existingError = document.querySelector('.error');
     if (existingError) {
         existingError.remove();
     }
 
-    // Create and show new error message
+    const successMessage = document.querySelector('.success'); 
+    if (successMessage) {
+        successMessage.remove();
+    }
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error';
     errorDiv.innerHTML = '<ul>' + errors.map(error => `<li>${error}</li>`).join('') + '</ul>';
     document.querySelector('form').insertBefore(errorDiv, document.querySelector('form').firstChild);
 }
 
-// Add event listener to form
 document.querySelector('form').addEventListener('submit', validateForm);
