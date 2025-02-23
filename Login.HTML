@@ -120,8 +120,12 @@
             <label for="mail">E-mail:</label>
             <input type="email" id="mail" name="mail" required>
 
-            <label for="fpassword">Password:</label>
-            <input type="password" id="fpassword" name="fpassword" required>
+            <label for="fpassword">Ripeti Password:</label><br>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="fpassword" name="fpassword" required style="width: 100%; padding-right: 40px;">
+                <span id="toggleFPassword" style="position: absolute; right: 10px; cursor: pointer;">
+                    👁️
+                </span>
 
             <input type="submit" value="Login">
         </form>
@@ -130,5 +134,17 @@
     <div class="style3">
         <h3>Non hai un account? <a href="registrati.php">Registrati</a></h3>
     </div>
+    <script>
+        document.getElementById('toggleFPassword').addEventListener('click', function() {
+            let passwordField = document.getElementById('fpassword');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                this.innerText = '🙈';
+            } else {
+                passwordField.type = 'password';
+                this.innerText = '👁️';
+            }
+        });
+    </script>
 </body>
 </html>
