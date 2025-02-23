@@ -136,5 +136,79 @@
     <div class="style3">
         <h3>Non hai un account? <a href="registrati.php">Registrati</a></h3>
     </div>
+    <script>
+        function validateLoginForm(event) {
+    event.preventDefault();
+
+    clearErrors();
+    
+    const email = document.getElementById('mail').value.trim();
+    const password = document.getElementById('fpassword').value;
+    
+    let isValid = true;
+    
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!email) {
+        showError('mail', 'L\'email è obbligatoria');
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        showError('mail', 'Inserisci un indirizzo email valido');
+        isValid = false;
+    }
+d
+    if (!password) {
+        showError('fpassword', 'La password è obbligatoria');
+        isValid = false;
+    }
+    if (isValid) {
+        event.target.submit();
+    }
+}
+
+function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const existingError = field.parentNode.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = 'red';
+    errorDiv.style.fontSize = '0.8em';
+    errorDiv.style.marginTop = '5px';
+    errorDiv.textContent = message;
+    
+    field.parentNode.insertBefore(errorDiv, field.nextSibling);
+    field.style.borderColor = 'red';
+}
+function clearErrors() {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => error.remove());
+    const fields = document.querySelectorAll('input');
+    fields.forEach(field => field.style.borderColor = '');
+}
+
+function setupLiveValidation() {
+    const fields = ['mail', 'fpassword'];
+    
+    fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('input', function() {
+            const errorMessage = this.parentNode.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+            this.style.borderColor = '';
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', validateLoginForm);
+    setupLiveValidation();
+})
+    </script>
 </body>
 </html>
