@@ -332,6 +332,12 @@ ALTER TABLE ONLY public.utente ALTER COLUMN id SET DEFAULT nextval('public.utent
 --
 
 COPY public.prestazioni (id, user_id, sport, data, created_at) FROM stdin;
+1	22	basket	2025-02-20	2025-02-20 20:03:30.196244
+2	19	calcio	2025-02-20	2025-02-20 20:12:32.452667
+3	21	basket	2025-02-21	2025-02-21 10:37:44.176571
+4	21	calcio	2025-02-21	2025-02-21 10:39:12.349577
+5	19	basket	2025-02-21	2025-02-21 17:47:15.116698
+6	19	calcio	2025-02-19	2025-02-21 18:41:46.216226
 \.
 
 
@@ -340,6 +346,9 @@ COPY public.prestazioni (id, user_id, sport, data, created_at) FROM stdin;
 --
 
 COPY public.stats_basket (id, prestazione_id, minuti, punti, tiri_tentati, tiri_realizzati, tiri3_tentati, tiri3_realizzati, tiri_liberi_tentati, tiri_liberi_realizzati, rimbalzi_totali, rimbalzi_offensivi, rimbalzi_difensivi, assist, stoppate, palle_rubate, palle_perse) FROM stdin;
+1	1	38	56	8	3	5	2	4	3	8	4	4	7	2	5	1
+2	3	30	22	20	11	0	0	2	2	10	5	5	4	2	4	2
+3	5	20	12	10	6	1	0	2	0	5	2	3	4	1	3	1
 \.
 
 
@@ -348,6 +357,9 @@ COPY public.stats_basket (id, prestazione_id, minuti, punti, tiri_tentati, tiri_
 --
 
 COPY public.stats_calcio (id, prestazione_id, minuti, gol, tiri, tiri_porta, assist, passaggi_tentati, passaggi_riusciti, intercetti, contrasti, palle_recuperate, dribbling_tentati, dribbling_riusciti) FROM stdin;
+1	2	67	2	5	3	1	10	7	9	2	8	10	6
+2	4	8	1	3	2	5	5	3	7	8	2	3	2
+3	6	54	2	5	3	8	9	4	7	6	9	10	8
 \.
 
 
@@ -368,6 +380,8 @@ COPY public.utente (id, nome, uname, mail, pass, fpass) FROM stdin;
 20	Marino	Lokkona	marino@gmail.co	$2y$10$rznroKv0NLYjO3YiYvEjcOM8Jfo0SfnnvQFtlxjgHAvdxxMJ7rslO	1Nf4m3
 21	Eraldo	obbiv	vincenzo@gmail.co	$2y$10$JuO6/gU4./IZ24u7M5D1euRugLoirpBLJrqYfNEXhXcpDDRd9ghbW	1Nf4m3
 22	Eraldo	Picardi	eraldo@gmail.com	$2y$10$RDxF8mvSxgDemamEnLlL6.6Au2YNtX..XvP3zKgj1k1r/QEVfydkG	pizzo
+23	Pericle	Lottone	pericle@gmail.com	$2y$10$VOeDy5bV30fXWyAwfsBBrOfpYalHc/Pu1EHoNEX/szJpkjq3FbDie	1Nf4m303
+24	Ruccagno	pellone	perro@gmail.co	$2y$10$7I4cUf5FmIGNKyBnlilZruWtZeiIdVVLYbpLijnzzmRiMz7cJp2ey	loppo
 \.
 
 
@@ -375,21 +389,21 @@ COPY public.utente (id, nome, uname, mail, pass, fpass) FROM stdin;
 -- Name: prestazioni_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.prestazioni_id_seq', 1, false);
+SELECT pg_catalog.setval('public.prestazioni_id_seq', 6, true);
 
 
 --
 -- Name: stats_basket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.stats_basket_id_seq', 1, false);
+SELECT pg_catalog.setval('public.stats_basket_id_seq', 3, true);
 
 
 --
 -- Name: stats_calcio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.stats_calcio_id_seq', 1, false);
+SELECT pg_catalog.setval('public.stats_calcio_id_seq', 3, true);
 
 
 --
@@ -403,7 +417,7 @@ SELECT pg_catalog.setval('public.stats_tennis_id_seq', 1, false);
 -- Name: utente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.utente_id_seq', 22, true);
+SELECT pg_catalog.setval('public.utente_id_seq', 24, true);
 
 
 --
