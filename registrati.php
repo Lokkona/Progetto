@@ -331,7 +331,7 @@ document.getElementById('toggleFPassword').addEventListener('click', function() 
         this.innerText = '👁️';
     }
 });
-ne
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registration_form');
     form.addEventListener('submit', validateForm);
