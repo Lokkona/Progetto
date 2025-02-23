@@ -137,7 +137,7 @@
         <h3>Non hai un account? <a href="registrati.php">Registrati</a></h3>
     </div>
     <script>
-        function validateLoginForm(event) {
+function validateLoginForm(event) {
     event.preventDefault();
 
     clearErrors();
@@ -155,14 +155,18 @@
         showError('mail', 'Inserisci un indirizzo email valido');
         isValid = false;
     }
-d
+
     if (!password) {
         showError('fpassword', 'La password è obbligatoria');
         isValid = false;
     }
+    
     if (isValid) {
+        // Rimuovo il preventDefault se la validazione passa
         event.target.submit();
+        return true;
     }
+    return false;
 }
 
 function showError(fieldId, message) {
@@ -182,6 +186,7 @@ function showError(fieldId, message) {
     field.parentNode.insertBefore(errorDiv, field.nextSibling);
     field.style.borderColor = 'red';
 }
+
 function clearErrors() {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(error => error.remove());
@@ -208,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     form.addEventListener('submit', validateLoginForm);
     setupLiveValidation();
-})
+});
     </script>
 </body>
 </html>
