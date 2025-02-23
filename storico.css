@@ -80,9 +80,9 @@ table { width: 100%; border-collapse: collapse; }
 table {
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 10px; /* Arrotonda gli angoli della tabella */
-    overflow: hidden; /* Evita che i bordi interni siano visibili */
-    border: 2px solid orange; /* Bordo per evidenziare meglio la tabella */
+    border-radius: 10px; 
+    overflow: hidden; 
+    border: 2px solid orange; 
 }
 
 th, td {

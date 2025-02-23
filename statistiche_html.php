@@ -1,6 +1,5 @@
 <?php
 session_start();
-//Redirect se l'utente non è loggato
 $isLoggedIn = isset($_SESSION['user_id']);
 $uname = $isLoggedIn ? $_SESSION['uname'] : '';
 if(!$isLoggedIn){
