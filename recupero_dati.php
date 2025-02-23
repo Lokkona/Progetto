@@ -2,10 +2,10 @@
 <?php
 session_start();
 header("Content-Type: application/json");
-$host = "localhost";
+$host = "gruppo21";
 $dbname = "miodatabase";
 $user = "www";
-$password = "1Nf4m303";
+$password = "tw2024";
 
 $connection_string = "host=$host dbname=$dbname user=$user password=$password";
 

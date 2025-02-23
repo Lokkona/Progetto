@@ -6,9 +6,9 @@ ini_set('display_errors', 1);
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POST["mail"]) && isset($_POST["fpassword"]) && !empty($_POST["fpassword"])){
 
     $host = "localhost"; 
-    $dbname = "miodatabase";  
+    $dbname = "gruppo21";  
     $username = "www";  
-    $password = "1Nf4m303"; 
+    $password = "tw2024"; 
 
     $db=pg_connect("host=$host user=$username password=$password dbname=$dbname");
     if (!$db) {

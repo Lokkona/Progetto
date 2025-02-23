@@ -13,9 +13,9 @@ $dataInizio=$data['dataInizio']??'';
 $dataFine=$data['dataFine']??'';
 
 $host="localhost";
-$dbname="miodatabase";
+$dbname="gruppo21";
 $user="www";
-$password="1Nf4m303";
+$password="tw2024";
 $connection_string="host=$host dbname=$dbname user=$user password=$password";
 
 $db=pg_connect($connection_string);

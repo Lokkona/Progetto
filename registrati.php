@@ -5,8 +5,8 @@
   error_reporting(E_ALL);
   $host = 'localhost'; 
   $username = 'www';  
-  $password = '1Nf4m303';    
-  $dbname = 'miodatabase';  
+  $password = 'tw2024';    
+  $dbname = 'gruppo21';  
   $error_message = ""; 
   $success_message = "";
   
