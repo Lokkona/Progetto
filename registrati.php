@@ -3,10 +3,10 @@
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
-  $host = 'localhost'; // o l'indirizzo del server DB
-  $username = 'www';  // il nome utente del DB
-  $password = '1Nf4m303';      // la password del DB
-  $dbname = 'miodatabase';  // il nome del database
+  $host = 'localhost'; 
+  $username = 'www';  
+  $password = '1Nf4m303';    
+  $dbname = 'miodatabase';  
   $error_message = ""; 
   $success_message = "";
   
@@ -41,7 +41,7 @@
     else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
         $error_message= "<div class=error>Email non valida!</div>";
     }
-    else if (!checkdnsrr($domain, "MX")) { // MX indica che il dominio ha un server di posta
+    else if (!checkdnsrr($domain, "MX")) {
         $error_message= "<div class=error>Email non valida!</div>";
     } 
     else {
@@ -207,7 +207,7 @@
                 },
                 function(error) {
                     alert('Errore nella geolocalizzazione: ' + error.message);
-                    document.getElementById('geolocation').checked = false; // Deseleziona se fallisce
+                    document.getElementById('geolocation').checked = false; 
                 }
             );
         } else {
@@ -215,28 +215,28 @@
             document.getElementById('geolocation').checked = false;
         }
     }
-});
-document.getElementById('togglePassword').addEventListener('click', function() {
-    let passwordField = document.getElementById('password');
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        this.innerText = '🙈'; 
-    } else {
-        passwordField.type = 'password';
-        this.innerText = '👁️';
-    }
-});
+    });
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        let passwordField = document.getElementById('password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            this.innerText = '🙈'; 
+        } else {
+            passwordField.type = 'password';
+            this.innerText = '👁️';
+        }
+    });
 
-document.getElementById('toggleFPassword').addEventListener('click', function() {
-    let passwordField = document.getElementById('fpassword');
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        this.innerText = '🙈';
-    } else {
-        passwordField.type = 'password';
-        this.innerText = '👁️';
-    }
-});
+    document.getElementById('toggleFPassword').addEventListener('click', function() {
+        let passwordField = document.getElementById('fpassword');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            this.innerText = '🙈';
+        } else {
+            passwordField.type = 'password';
+            this.innerText = '👁️';
+        }
+    });
     </script>
     </body>
 </html>

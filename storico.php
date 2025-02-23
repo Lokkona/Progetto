@@ -1,7 +1,6 @@
 
 <?php
 session_start();
-//Redirect se l'utente non è loggato
 $isLoggedIn = isset($_SESSION['user_id']);
 $uname = $isLoggedIn ? $_SESSION['uname'] : '';
 if(!$isLoggedIn){
@@ -66,34 +65,31 @@ if(!$isLoggedIn){
     </div>
     <script>
          document.addEventListener("DOMContentLoaded", function () {
-            const sportFilter = document.getElementById("sportFilter"); // Select per il filtro
+            const sportFilter = document.getElementById("sportFilter"); 
             const dateFilter = document.getElementById("dateFilter");
             const tableBody = document.querySelector("#prestazioniTable tbody");
-            let prestazioniData = []; // Memorizza i dati delle prestazioni
+            let prestazioniData = []; 
 
             function fetchData() {
                 fetch("recupero_dati.php")
                 .then(response => response.json())
                 .then(data => {
-                    prestazioniData = data; // Salviamo i dati originali
-                    updateTable(); // Popoliamo la tabella con tutti i dati
+                    prestazioniData = data; 
+                    updateTable(); 
                 })
                 .catch(error => console.error("Errore nel recupero dati:", error));
             }
 
             function updateTable() {
-                const selectedSport = sportFilter.value; // Sport selezionato
+                const selectedSport = sportFilter.value; 
                 const selectedDate = dateFilter.value;
-                tableBody.innerHTML = ""; // Pulisce la tabella
+                tableBody.innerHTML = ""; 
 
                 prestazioniData.forEach(row => {
-                    const rowDate = row.data; // Assumendo che row.data sia nel formato YYYY-MM-DD
+                    const rowDate = row.data; 
                 if ((selectedSport === "tutti" || row.sport === selectedSport) &&
                     (selectedDate === "" || rowDate === selectedDate)) {
-                    let dettagli = "";
-
-
-                    // Genera la descrizione dettagliata in base allo sport
+                    let dettagli = '';
                     if (row.dettagli) {
                         if (row.sport === "calcio") {
                                 dettagli = `Minuti giocati: ${row.dettagli.minuti}| Gol: ${row.dettagli.gol}| Tiri : ${row.dettagli.tiri}| Tiri in porta: ${row.dettagli.tiri_porta}| Assist: ${row.dettagli.assist}| Passaggi tentati: ${row.dettagli.passaggi_tentati}| Passaggi riusciti: ${row.dettagli.passaggi_riusciti}| Intercetti: ${row.dettagli.intercetti}| Contrasti: ${row.dettagli.contrasti}| Palle recuperate: ${row.dettagli.palle_recuperate}| Dribbling tentati: ${row.dettagli.dribbling_tentati}| Dribbling riusciti: ${row.dettagli.dribbling_riusciti}`;

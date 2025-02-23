@@ -2,7 +2,6 @@
 <?php
 session_start();
 header("Content-Type: application/json");
-// Connessione al database
 $host = "localhost";
 $dbname = "miodatabase";
 $user = "www";
@@ -10,7 +9,6 @@ $password = "1Nf4m303";
 
 $connection_string = "host=$host dbname=$dbname user=$user password=$password";
 
-// Connessione al database con pg_connect
 $db = pg_connect($connection_string);
 
 if (!$db) {
@@ -18,7 +16,6 @@ if (!$db) {
     exit;
 }
 
-// Usa $_SESSION invece di $_GET per l'utente loggato
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(["error" => "Utente non autenticato"]);
     exit;
@@ -26,7 +23,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-    // Query per ottenere tutte le prestazioni inserite dall'utente
     $query = "SELECT id, sport,  data, created_at FROM prestazioni WHERE user_id = $1 ORDER BY created_at DESC";
     $result = pg_query_params($db, $query, [$user_id]);
 
@@ -40,8 +36,6 @@ $user_id = $_SESSION['user_id'];
     foreach ($prestazioni as &$p) {
         $sport = $p['sport'];
         $prestazione_id = $p['id'];
-
-        // Query dinamica per recuperare i dettagli in base allo sport
         $dettagliQuery = "";
         switch ($sport) {
             case "calcio":
@@ -73,6 +67,5 @@ $user_id = $_SESSION['user_id'];
     
     echo json_encode($prestazioni);
     
-    // Chiudi la connessione al database
     pg_close($db);
     ?>
