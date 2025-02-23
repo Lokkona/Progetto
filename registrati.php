@@ -189,13 +189,10 @@
     </div>
     <script>
 function validateForm(event) {
-    // Previeni l'invio del form di default
     event.preventDefault();
-    
-    // Reset dei messaggi di errore
+
     clearErrors();
-    
-    // Recupero dei valori dei campi
+
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('mail').value.trim();
     const username = document.getElementById('uname').value.trim();
@@ -204,21 +201,18 @@ function validateForm(event) {
     const privacy = document.getElementById('privacy').checked;
     
     let isValid = true;
-    
-    // Validazione nome
+
     if (name.length < 2) {
         showError('name', 'Il nome deve contenere almeno 2 caratteri');
         isValid = false;
     }
-    
-    // Validazione email
+
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(email)) {
         showError('mail', 'Inserisci un indirizzo email valido');
         isValid = false;
     }
-    
-    // Validazione username
+
     if (username.length < 3) {
         showError('uname', 'Lo username deve contenere almeno 3 caratteri');
         isValid = false;
@@ -227,8 +221,7 @@ function validateForm(event) {
         showError('uname', 'Lo username non può contenere spazi');
         isValid = false;
     }
-    
-    // Validazione password
+
     if (password.length < 8) {
         showError('password', 'La password deve contenere almeno 8 caratteri');
         isValid = false;
@@ -245,26 +238,22 @@ function validateForm(event) {
         showError('password', 'La password deve contenere almeno un carattere speciale (!@#$%^&*)');
         isValid = false;
     }
-    
-    // Validazione conferma password
+
     if (password !== confirmPassword) {
         showError('fpassword', 'Le password non coincidono');
         isValid = false;
     }
-    
-    // Validazione privacy
+
     if (!privacy) {
         showError('privacy', 'Devi accettare l\'informativa sulla privacy');
         isValid = false;
     }
-    
-    // Se tutto è valido, invia il form
+m
     if (isValid) {
         event.target.submit();
     }
 }
 
-// Funzione per mostrare gli errori
 function showError(fieldId, message) {
     const field = document.getElementById(fieldId);
     const errorDiv = document.createElement('div');
@@ -278,7 +267,6 @@ function showError(fieldId, message) {
     field.style.borderColor = 'red';
 }
 
-// Funzione per pulire gli errori
 function clearErrors() {
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(error => error.remove());
@@ -287,14 +275,12 @@ function clearErrors() {
     fields.forEach(field => field.style.borderColor = '');
 }
 
-// Funzione per la validazione in tempo reale
 function setupLiveValidation() {
     const fields = ['name', 'mail', 'uname', 'password', 'fpassword'];
     
     fields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         field.addEventListener('input', function() {
-            // Rimuovi l'errore specifico per questo campo
             const errorMessage = this.nextSibling;
             if (errorMessage && errorMessage.className === 'error-message') {
                 errorMessage.remove();
@@ -304,7 +290,6 @@ function setupLiveValidation() {
     });
 }
 
-// Gestione della geolocalizzazione
 document.getElementById('geolocation').addEventListener('change', function() {
     if (this.checked) {
         if (navigator.geolocation) {
@@ -325,7 +310,6 @@ document.getElementById('geolocation').addEventListener('change', function() {
     }
 });
 
-// Toggle visibilità password
 document.getElementById('togglePassword').addEventListener('click', function() {
     let passwordField = document.getElementById('password');
     if (passwordField.type === 'password') {
@@ -347,8 +331,7 @@ document.getElementById('toggleFPassword').addEventListener('click', function() 
         this.innerText = '👁️';
     }
 });
-
-// Inizializzazione
+ne
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registration_form');
     form.addEventListener('submit', validateForm);
