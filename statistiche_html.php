@@ -22,7 +22,7 @@ if(!$isLoggedIn){
     <div class="header">Sport Stats Tracker</div>
     <div class="topnav">
         <div class="row1">
-            <a href="index.php">HTML</a>
+            <a href="index.php">HOME</a>
             <a href="inserisci_dati_form.php">AGGIUNGI PRESTAZIONE</a>
             <a href="storico.php">STORICO</a>
             <a href="statistiche_html.php">STATISTICHE</a>
