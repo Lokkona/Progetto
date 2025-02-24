@@ -248,6 +248,7 @@ function validateForm(event) {
         showError('privacy', 'Devi accettare l\'informativa sulla privacy');
         isValid = false;
     }
+
     if (isValid) {
         event.target.submit();
     }
