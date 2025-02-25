@@ -159,8 +159,8 @@ function validateLoginForm(event) {
     if (!password) {
         showError('fpassword', 'La password è obbligatoria');
         isValid = false;
-    }
-    
+    } 
+
     if (isValid) {
         event.target.submit();
         return true;
