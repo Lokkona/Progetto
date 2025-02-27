@@ -20,16 +20,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mail"]) && !empty($_POS
     $result=pg_query_params($db, $query, array($mail));
     if($result){
       $row = pg_fetch_assoc($result);
-        if ($row) {
-            if(password_verify($fpassword, $row["pass"])){
-                $_SESSION["user_id"] = $row["id"];
-                $_SESSION["user_mail"] = $mail;
-                $_SESSION["uname"] = $row["uname"];
-               header("Location: index.php");
-            }
+      if ($row) {
+        if (password_verify($fpassword, $row["pass"])) {
+            $_SESSION["user_id"] = $row["id"];
+            $_SESSION["user_mail"] = $mail;
+            $_SESSION["uname"] = $row["uname"];
+            header("Location: index.php");
+            exit(); 
         } else {
-            echo"<h3>Utente inesistente o password errata</h3>";
+            echo "<h3>Utente inesistente o password errata</h3>";
         }
+    } else {
+        echo "<h3>Utente inesistente o password errata</h3>";
+    }
     } else {
         echo "<h3>Errore nella query: " . pg_last_error($db) . "</h3>";
     }
