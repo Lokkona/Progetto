@@ -133,7 +133,17 @@ if(!$isLoggedIn){
             datasets.push({
                 label:'Gol',
                 data: data.map(p=>p.dettagli?.gol || 0),
-                borderColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(75, 77, 192)',
+            });
+            datasets.push({
+                label:'Assist',
+                data: data.map(p=>p.dettagli?.assist || 0),
+                borderColor: 'rgb(192, 75, 75)',
+            });
+            datasets.push({
+                label:'Dribbling Riusciti',
+                data: data.map(p=>p.dettagli?.dribbling_riusciti || 0),
+                borderColor: 'rgb(165, 192, 75)',
             });
         }else if(sport==='basket'){
             datasets.push({
@@ -141,11 +151,31 @@ if(!$isLoggedIn){
                 data: data.map(p=>p.dettagli?.punti || 0),
                 borderColor: 'rgb(255, 99, 132)',
             });
+            datasets.push({
+                label:'Assist',
+                data: data.map(p=>p.dettagli?.assist || 0),
+                borderColor: 'rgb(83, 75, 192)',
+            });
+            datasets.push({
+                label:'Rimbalzi Totali',
+                data: data.map(p=>p.dettagli?.rimbalzi_totali || 0),
+                borderColor: 'rgb(171, 192, 75)',
+            });
         } else if(sport=== 'tennis'){
             datasets.push({
                 label: 'Punti Vinti',
                 data: data.map(p=>p.dettagli?.punti_vinti || 0),
-                borderColor: 'rgb(54, 162, 235)',
+                borderColor: 'rgb(93, 54, 235)',
+            });
+            datasets.push({
+                label:'Ace',
+                data: data.map(p=>p.dettagli?.prima_vinte || 0),
+                borderColor: 'rgb(192, 75, 75)',
+            });
+            datasets.push({
+                label:'Punti Break',
+                data: data.map(p=>p.dettagli?.break_punti || 0),
+                borderColor: 'rgb(161, 192, 75)',
             });
         }
         chart= new Chart(ctx, {
